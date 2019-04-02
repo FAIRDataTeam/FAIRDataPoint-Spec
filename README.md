@@ -93,6 +93,7 @@ The FAIR Data Accessor Service realises the Data Access function. In its turn, t
 
 The details of what each of these metadata object represent are given in the Metadata section below in this document. Also, the details of the FAIR Data Point API are given below in this document at the Application Programming Interface (API) section.
 
+![FDPs’ Archimate Application layer architecture](images/FDP_metadata.png)
 Fig. 5 - FDPs’ Archimate Application layer architecture
 
 # Metadata model specification
