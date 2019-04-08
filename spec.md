@@ -4,6 +4,16 @@ The FAIR Data Point's metadata layered approach is composed of five layers, name
 
 For an overview of the FDP motivation and design, see [README.md](README.md).
 
+Table of contents
+===
+- [FAIR Data Point metadata layer](#fair-data-point-metadata-layer)
+- [Catalog, Dataset and Distribution metadata layers](#catalog-dataset-and-distribution-metadata-layers)
+  - [Catalog metadata layer](#catalog-metadata-layer)
+  - [Dataset metadata layer](#dataset-metadata-layer)
+  - [Distribution metadata layer](#distribution-metadata-layer)
+  - [Data record metadata layer](#data-record-metadata-layer)
+- [Access rights rdf model](#access-rights-rdf-model)
+
 ## FAIR Data Point metadata layer
 
 The FAIR Data Point metadata contains information about the FDP itself and its governing authority. The FAIR Data Point metadata content is based on the [RE3Data Schema](http://www.re3data.org/schema).
@@ -86,7 +96,7 @@ For the representation of the catalog of datasets, each one of the offered datas
 * dcat:Dataset: represents an individual dataset in the collection;
 * dcat:Distribution: represent an accessible form of a dataset, e.g., a downloadable file or a web service that gives access to the data.
 
-## Catalog metadata layer
+### Catalog metadata layer
 
 Catalog metadata content table 
 
@@ -146,7 +156,7 @@ An example of catalog metadata.
         dct:identifier "comparativeGenomics-metadataID".
 ```
 
-## Dataset metadata layer
+### Dataset metadata layer
 
 |Ontology | Term name | Required/Optional | Description|
 | :---: | :---: | :---: | :---: |
@@ -208,7 +218,7 @@ An example of dataset metadata.
     <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5-metadataID> a <http://edamontology.org/data_0842>;
         dct:identifier "goNlSvR5-metadataID".
 ```
-## Distribution metadata layer
+### Distribution metadata layer
 
 |Ontology | Term name | Required/Optional | Description|
 | :---: | :---: | :---: | :---: |
@@ -262,7 +272,7 @@ An example of distribution metadata.
     <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html-metadataID> a <http://edamontology.org/data_0842>;
         dct:identifier "html-metadataID".
 ```
-## Data record metadata layer
+### Data record metadata layer
 
 
 |Ontology | Term name | Required/Optional | Description|

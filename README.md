@@ -3,6 +3,26 @@ Specification for the FAIR DataPoint. The master branch will contain the latest 
 
 For a complete specification of the FDP metadata items, see [spec.md](spec.md).
 
+Table of contents
+===
+- [Introduction](#introduction)
+  - [Purpose](#purpose)
+  - [Product scope](#product-scope)
+- [Overall Description](#overall-description)
+  - [Usage Scenarios](#usage-scenarios)
+    - [Data discovery](#data-discovery)
+    - [Data access](#data-access)
+    - [Data publication](#data-publication)
+    - [Data metrics gathering](#data-metrics-gathering)
+  - [Goals](#goals)
+  - [Product perspective](#product-perspective)
+- [Architecture](#architecture)
+- [Metadata model specification](#metadata-model-specification)
+- [External interfaces](#external-interfaces)
+  - [Application Programming Interface (API)](#application-programming-interface-api)
+    - [Metadata Provider API](#metadata-provider-api)
+    - [Current implementation](#current-implementation)
+
 # Introduction 
 `FAIRDataPoint` (FDP) is a data repository that provides metadata and data in a FAIR way. FDP uses a REST API for creating, storing and serving `FAIR metadata`. FDP is a software that, from one side, allows data owners to expose datasets in a FAIR manner and, for another side, allows data users to discover information (metadata) about the offered datasets and, if license conditions allow, the actual data can be accessed.
 
