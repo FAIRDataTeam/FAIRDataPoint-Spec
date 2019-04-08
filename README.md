@@ -1,5 +1,7 @@
 # FAIRDataPoint-Spec
-Specification for the FAIR DataPoint. The master branch will contain the latest stable release of the specification, while the [development branch](https://github.com/DTL-FAIRData/FAIRDataPoint-Spec/tree/development) contains the latest working draft.
+Specification for the FAIR DataPoint. The master branch will contain the latest stable release of the specification, while the [development branch](/../../tree/development) contains the latest working draft.
+
+For a complete specification of the FDP metadata items, see [spec.md](spec.md).
 
 # Introduction 
 `FAIRDataPoint` (FDP) is a data repository that provides metadata and data in a FAIR way. FDP uses a REST API for creating, storing and serving `FAIR metadata`. FDP is a software that, from one side, allows data owners to expose datasets in a FAIR manner and, for another side, allows data users to discover information (metadata) about the offered datasets and, if license conditions allow, the actual data can be accessed.

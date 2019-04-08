@@ -2,6 +2,8 @@
 
 The FAIR Data Point's metadata layered approach is composed of five layers, namely, the FAIR Data Point itself, the collection of datasets, each one of the offered datasets, the datasets' distribution and the structure and semantics of each of dataset.
 
+For an overview of the FDP motivation and design, see [README.md](README.md).
+
 ## FAIR Data Point metadata layer
 
 The FAIR Data Point metadata contains information about the FDP itself and its governing authority. The FAIR Data Point metadata content is based on the [RE3Data Schema](http://www.re3data.org/schema).
