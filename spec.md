@@ -1,4 +1,4 @@
-# Metadata
+# FAIR Data Point metadata specification
 
 The FAIR Data Point's metadata layered approach is composed of five layers, namely, the FAIR Data Point itself, the collection of datasets, each one of the offered datasets, the datasets' distribution and the structure and semantics of each of dataset.
 
