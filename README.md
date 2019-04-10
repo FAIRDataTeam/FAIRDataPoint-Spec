@@ -1,4 +1,4 @@
-# FAIRDataPoint-Spec
+# FAIR Data Point design specification
 Specification for the FAIR DataPoint. The master branch will contain the latest stable release of the specification, while the [development branch](/../../tree/development) contains the latest working draft.
 
 For a complete specification of the FDP metadata items, see [spec.md](spec.md).
