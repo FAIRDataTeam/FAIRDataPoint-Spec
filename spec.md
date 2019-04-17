@@ -272,6 +272,7 @@ An example of distribution metadata.
         dct:identifier "html-metadataID".
 ```
 ### Data record metadata layer
+The data record metadata aims to describe a [distribution's](#distribution-metadata-layer) data on the format content level. The specification of this layer is still a work in progress. The model as described below is a draft of the data record metadata.
 
 Ontology     | Term name              | Required/Optional | Description
 ---          | ---                    | ---               | ---
