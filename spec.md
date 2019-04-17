@@ -28,7 +28,6 @@ DC terms | dct:title | `Required` | Name of the repository with the language tag
 | | dct:publisher | `Required` | r3d:providedBy - Organisation(s) responsible for the repository
 | | dct:language | Optional | 
 | | dct:license | Optional | 
-| | dct:alternative | Optional | Alternative name(s) for the repository with the language tag
 | | dct:conformsTo | Optional | The specification of the repository metadata schema (ShEx)
 | | dct:rights | Optional |  
 |FDP ontology | fdp:metadataIdentifier | `Required` | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
@@ -36,12 +35,8 @@ DC terms | dct:title | `Required` | Name of the repository with the language tag
 | | fdp:metadataModified | `Required` | Last modified date of the metadata entry
 | RDF Schema | rdfs:label | Optional | Name of the repository with the language tag 
 | RE3Data | r3d:institution | Optional | 
-| | r3d:repositoryContact | Optional | Contact information for the (person, organisation, etc)  repository
-| | r3d:repositoryType | Optional | Type of the FDP from a controlled vocabulary. E.g., disciplinary, governamental, institutional, multidisciplinary, project-related, commercial, etc.
 | | r3d:startDate | Optional | Release date of the FDP.
-| | r3d:repositoryLanguage | Optional | The user interface language of the repository.
 | | r3d:api | Optional | Wrapper for APIType (FAIR, OAI-PMH, etc), URL, documentation 
-| | r3d:certificate | Optional | The certificate, seal or standard the repository complies with.
 | | r3d:dataCatalog | `Required` | 
 | | r3d:country | Optional |  
 | | r3d:repositoryIdentifier | `Required` | Identifier of the repository.
