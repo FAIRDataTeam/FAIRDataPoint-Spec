@@ -232,7 +232,8 @@ FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the me
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the data distribution with the language tag
-DCAT         | dcat:accessURL (or) dcat:downloadURL | `Required` | 
+DCAT         | dcat:accessURL         | `Required` (or dcat:downloadURL) | A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
+|            | dcat:downloadURL       | `Required` (or dcat:accessURL)   | A file that contains the distribution of the dataset in a given format
 |            | dcat:mediaType         | `Required`        | (Only for dcat:downloadURL) 
 |            | dcat:format            | Optional          | 
 |            | dcat:byteSize          | Optional          | 
