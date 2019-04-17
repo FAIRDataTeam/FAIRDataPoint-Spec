@@ -93,28 +93,26 @@ For the representation of the catalog of datasets, each one of the offered datas
 
 Catalog metadata content table 
 
-|Ontology | Term name | Required/Optional | Description|
-| :---: | :---: | :---: | :---: |
-DC terms | dct:title | `Required` | Name of the catalog with the language tag
-| | dct:hasVersion | `Required` | Version of the catalog
-| | dct:publisher | `Required` | Organisation(s)  or Persons(s) responsible for the catalog
-| | dct:description | Optional | Description of the catalog with the language tag
-| | dct:language | Optional | 
-| | dct:license | Optional | 
-| | dct:issued | Optional | Created date of the catalog entry
-| | dct:modified | Optional | Last modified date of the catalog entry
-| | dct:conformsTo | Optional | The specification of the catalog metadata schema (ShEx)
-| | dct:rights | Optional | 
-FDP ontology | fdp:metadataIdentifier | `Required` | 
-| | fdp:metadataIssued | `Required` | Created date of the metadata entry
-| | fdp:metadataModified | `Required` | Last modified date of the metadata entry
-RDF Schema | rdfs:label | Optional | Name of the catalog with the language tag
-FOAF | foaf:homepage | Optional |  
-DCAT | dcat:dataset | `Required` | 
-| | dcat:themeTaxonomy | `Required` | 
+Ontology     | Term name              | Required/Optional | Description
+--------     | ---------              | ----------------- | -----------
+DC terms     | dct:title              | `Required`        | Name of the catalog with the language tag
+|            | dct:hasVersion         | `Required`        | Version of the catalog
+|            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the catalog
+|            | dct:description        | Optional          | Description of the catalog with the language tag
+|            | dct:language           | Optional          | 
+|            | dct:license            | Optional          | 
+|            | dct:issued             | Optional          | Created date of the catalog entry
+|            | dct:modified           | Optional          | Last modified date of the catalog entry
+|            | dct:conformsTo         | Optional          | The specification of the catalog metadata schema (ShEx)
+|            | dct:rights             | Optional          | 
+FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | Optional          | Name of the catalog with the language tag
+FOAF         | foaf:homepage          | Optional          | 
+DCAT         | dcat:dataset           | `Required`        | 
+|            | dcat:themeTaxonomy     | `Required`        | 
  
-
-
 An example of catalog metadata.
 
 ```ttl
@@ -151,28 +149,27 @@ An example of catalog metadata.
 
 ### Dataset metadata layer
 
-|Ontology | Term name | Required/Optional | Description|
-| :---: | :---: | :---: | :---: |
-DC terms | dct:title | `Required` | Name of the dataset with the language tag 
-| | dct:publisher | `Required` | Organisation(s)  or Persons(s) responsible for the dataset
-| | dct:hasVersion | `Required` | Version of the dataset 
-| | dct:description | Optional | Description of the dataset with the language tag
-| | dct:conformsTo | Optional | The specification of the dataset metadata schema (ShEx)
-| | dct:issued | Optional | Created date of the dataset entry
-| | dct:modified | Optional | Last modified date of the dataset entry 
-| | dct:language | Optional |   
-| | dct:license | Optional |  
-| | dct:rights | Optional |  
-FDP ontology | fdp:metadataIdentifier | `Required` | 
-| | fdp:metadataIssued | `Required`| Created date of the metadata entry
-| | fdp:metadataModified | `Required` | Last modified date of the metadata entry
-RDF Schema | rdfs:label | Optional | Name of the dataset with the language tag
-DCAT | dcat:distribution | `Required` | 
-| | dcat:theme | `Required` | 
-| | dcat:contactPoint | Optional | 
-| | dcat:keyword | Optional | Keyword(s) related to the dataset with the language tag 
-| | dcat:landingPage | Optional | Home page of the dataset
-
+Ontology     | Term name              | Required/Optional | Description
+---          | ---                    | ---               | ---
+DC terms     | dct:title              | `Required`        | Name of the dataset with the language tag 
+|            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the dataset
+|            | dct:hasVersion         | `Required`        | Version of the dataset 
+|            | dct:description        | Optional          | Description of the dataset with the language tag
+|            | dct:conformsTo         | Optional          | The specification of the dataset metadata schema (ShEx)
+|            | dct:issued             | Optional          | Created date of the dataset entry
+|            | dct:modified           | Optional          | Last modified date of the dataset entry 
+|            | dct:language           | Optional          | 
+|            | dct:license            | Optional          | 
+|            | dct:rights             | Optional          | 
+FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | Optional          | Name of the dataset with the language tag
+DCAT         | dcat:distribution      | `Required`        | 
+|            | dcat:theme             | `Required`        | 
+|            | dcat:contactPoint      | Optional          | 
+|            | dcat:keyword           | Optional          | Keyword(s) related to the dataset with the language tag 
+|            | dcat:landingPage       | Optional          | Home page of the dataset
 
 An example of dataset metadata.
 
@@ -213,24 +210,24 @@ An example of dataset metadata.
 ```
 ### Distribution metadata layer
 
-|Ontology | Term name | Required/Optional | Description|
-| :---: | :---: | :---: | :---: |
-DC terms | dct:title | `Required` | Name of the data distribution with the language tag
-| | dct:conformsTo | Optional | The specification of the distribution metadata schema (ShEx)
-| | dct:license | `Required` | 
-| | dct:hasVersion | `Required` | Version of the distribution
-| | dct:issued | Optional | Created date of the distribution entry
-| | dct:modified | Optional | Last modified date of the distribution entry
-| | dct:rights | Optional |  
-| | dct:description | Optional | Description of the description with the language tag
-FDP ontology | fdp:metadataIdentifier | `Required` | 
-| | fdp:metadataIssued | `Required` | Created date of the metadata entry
-| | fdp:metadataModified | `Required` | Last modified date of the metadata entry
-RDF Schema | rdfs:label | Optional | Name of the data distribution with the language tag
-DCAT | dcat:accessURL (or) dcat:downloadURL | `Required` | 
-| | dcat:mediaType | `Required` | (Only for dcat:downloadURL) 
-| | dcat:format | Optional | 
-| | dcat:byteSize | Optional | 
+Ontology     | Term name              | Required/Optional | Description
+--------     | ---------              | ----------------- | -----------
+DC terms     | dct:title              | `Required`        | Name of the data distribution with the language tag
+|            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (ShEx)
+|            | dct:license            | `Required`        | 
+|            | dct:hasVersion         | `Required`        | Version of the distribution
+|            | dct:issued             | Optional          | Created date of the distribution entry
+|            | dct:modified           | Optional          | Last modified date of the distribution entry
+|            | dct:rights             | Optional          | 
+|            | dct:description        | Optional          | Description of the description with the language tag
+FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | Optional          | Name of the data distribution with the language tag
+DCAT         | dcat:accessURL (or) dcat:downloadURL | `Required` | 
+|            | dcat:mediaType         | `Required`        | (Only for dcat:downloadURL) 
+|            | dcat:format            | Optional          | 
+|            | dcat:byteSize          | Optional          | 
  
 
 
@@ -267,24 +264,22 @@ An example of distribution metadata.
 ```
 ### Data record metadata layer
 
-
-|Ontology | Term name | Required/Optional | Description|
-| :---: | :---: | :---: | :---: |
-DC terms | dct:title | `Required` | Name of the datarecord with the language tag
-| | dct:conformsTo | Optional | The specification of the datarecord metadata schema (ShEx)
-| | dct:license | `Required` |
-| | dct:hasVersion | `Required` | Version of the datarecord
-| | dct:issued | Optional | Created date of the rml mappings
-| | dct:modified | Optional | Last modified date of the rml mappings
-| | dct:rights | Optional |
-| | dct:description | Optional | Description of the description with the language tag
-FDP ontology | fdp:metadataIdentifier | `Required` |
-| | fdp:metadataIssued | `Required` | Created date of the metadata entry
-| | fdp:metadataModified | `Required` | Last modified date of the metadata entry
-| | fdp:rmlMapping | `Required` | Link to the generic rml mapping
-| | fdp:rmlInputSource | Optional | Distribution used to generate RDF
-RDF Schema | rdfs:label | Optional | Name of the data datarecord with the language tag
-
+Ontology     | Term name              | Required/Optional | Description
+---          | ---                    | ---               | ---
+DC terms     | dct:title              | `Required`        | Name of the datarecord with the language tag
+|            | dct:conformsTo         | Optional          | The specification of the datarecord metadata schema (ShEx)
+|            | dct:license            | `Required`        | 
+|            | dct:hasVersion         | `Required`        | Version of the datarecord
+|            | dct:issued             | Optional          | Created date of the rml mappings
+|            | dct:modified           | Optional          | Last modified date of the rml mappings
+|            | dct:rights             | Optional          | 
+|            | dct:description        | Optional          | Description of the description with the language tag
+FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
+|            | fdp:rmlMapping         | `Required`        | Link to the generic rml mapping
+|            | fdp:rmlInputSource     | Optional          | Distribution used to generate RDF
+RDF Schema   | rdfs:label             | Optional          | Name of the data datarecord with the language tag
 
 An example of data record metadata
 ```ttl
