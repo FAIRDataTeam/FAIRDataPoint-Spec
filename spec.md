@@ -25,18 +25,18 @@ Ontology     | Term name                | Required/Optional | Description
 DC terms     | dct:title                | `Required`        | Name of the repository with the language tag
 |            | dct:hasVersion           | `Required`        | Version of the repository
 |            | dct:description          | Optional          | Description of the repository with  the language tag
-|            | dct:publisher            | `Required`        | r3d:providedBy - Organisation(s) responsible for the repository
+|            | dct:publisher            | `Required`        | 
 |            | dct:language             | Optional          | 
 |            | dct:license              | Optional          | 
-|            | dct:conformsTo           | Optional          | The specification of the repository metadata schema (ShEx)
-|            | dct:rights               | Optional          |  
+|            | dct:conformsTo           | Optional          | The specification of the repository metadata schema (for example ShEx)
+|            | dct:rights               | Optional          | 
+|            | dct:references           | Optional          | Reference to documentation (API or otherwise).
 FDP ontology | fdp:metadataIdentifier   | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued       | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified     | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label               | Optional          | Name of the repository with the language tag 
 RE3Data      | r3d:institution          | Optional          | 
 |            | r3d:startDate            | Optional          | Release date of the FDP.
-|            | r3d:api                  | Optional          | Wrapper for APIType (FAIR, OAI-PMH, etc), URL, documentation 
 |            | r3d:dataCatalog          | `Required`        | 
 |            | r3d:country              | Optional          |  
 |            | r3d:repositoryIdentifier | `Required`        | Identifier of the repository.
