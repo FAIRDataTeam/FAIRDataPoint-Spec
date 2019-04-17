@@ -25,7 +25,7 @@ Ontology     | Term name                | Required/Optional | Description
 DC terms     | dct:title                | `Required`        | Name of the repository with the language tag
 |            | dct:hasVersion           | `Required`        | Version of the repository
 |            | dct:description          | Optional          | Description of the repository with  the language tag
-|            | dct:publisher            | `Required`        | 
+|            | dct:publisher            | `Required`        | Organisation(s) responsible for the repository
 |            | dct:language             | Optional          | 
 |            | dct:license              | Optional          | 
 |            | dct:conformsTo           | Optional          | The specification of the repository metadata schema (for example ShEx)
@@ -37,9 +37,9 @@ FDP ontology | fdp:metadataIdentifier   | `Required`        | Identifier of the 
 |            | fdp:metadataModified     | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label               | Optional          | Name of the repository with the language tag 
 RE3Data      | r3d:institution          | Optional          | 
-|            | r3d:startDate            | Optional          | Release date of the FDP.
-|            | r3d:lastUpdate           | Optional          | Last update timestamp of the FDP.
-|            | r3d:dataCatalog          | `Required`        | 
+|            | r3d:startDate            | Optional          | Release date of the repository
+|            | r3d:lastUpdate           | Optional          | Last update timestamp of the repository
+|            | r3d:dataCatalog          | `Required`        | List of catalog metadata URLs
 |            | r3d:country              | Optional          |  
 |            | r3d:repositoryIdentifier | `Required`        | Identifier of the repository.
 
@@ -114,8 +114,8 @@ FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the me
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the catalog with the language tag
 FOAF         | foaf:homepage          | Optional          | 
-DCAT         | dcat:dataset           | `Required`        | 
-|            | dcat:themeTaxonomy     | `Required`        | 
+DCAT         | dcat:dataset           | `Required`        | List of dataset URLs
+|            | dcat:themeTaxonomy     | `Required`        | List of taxonomy URLs
  
 An example of catalog metadata.
 
@@ -171,8 +171,8 @@ FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the me
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the dataset with the language tag
-DCAT         | dcat:distribution      | `Required`        | 
-|            | dcat:theme             | `Required`        | 
+DCAT         | dcat:distribution      | `Required`        | List of distribution URLs
+|            | dcat:theme             | `Required`        | List of concepts that describe the dataset
 |            | dcat:contactPoint      | Optional          | 
 |            | dcat:keyword           | Optional          | Keyword(s) related to the dataset with the language tag 
 |            | dcat:landingPage       | Optional          | Home page of the dataset
@@ -220,7 +220,7 @@ Ontology     | Term name              | Required/Optional | Description
 --------     | ---------              | ----------------- | -----------
 DC terms     | dct:title              | `Required`        | Name of the data distribution with the language tag
 |            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (ShEx)
-|            | dct:license            | `Required`        | 
+|            | dct:license            | `Required`        | Link to the license description
 |            | dct:hasVersion         | `Required`        | Version of the distribution
 |            | dct:issued             | Optional          | Created date of the distribution entry
 |            | dct:modified           | Optional          | Last modified date of the distribution entry
@@ -276,7 +276,7 @@ Ontology     | Term name              | Required/Optional | Description
 ---          | ---                    | ---               | ---
 DC terms     | dct:title              | `Required`        | Name of the datarecord with the language tag
 |            | dct:conformsTo         | Optional          | The specification of the datarecord metadata schema (ShEx)
-|            | dct:license            | `Required`        | 
+|            | dct:license            | `Required`        | Link to the license description
 |            | dct:hasVersion         | `Required`        | Version of the datarecord
 |            | dct:issued             | Optional          | Created date of the rml mappings
 |            | dct:modified           | Optional          | Last modified date of the rml mappings
