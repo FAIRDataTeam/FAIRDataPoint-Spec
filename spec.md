@@ -22,6 +22,7 @@ FDP metadata content table
 
 Ontology     | Term name                | Required/Optional | Description
 ------------ | ------------------------ | ----------------- | -----------
+RDF          | rdf:type                 | `Required`        | Required to be of type `r3d:Repository`
 DC terms     | dct:title                | `Required`        | Name of the repository with the language tag
 |            | dct:hasVersion           | `Required`        | Version of the repository
 |            | dct:description          | Optional          | Description of the repository with  the language tag
@@ -97,6 +98,7 @@ Catalog metadata content table
 
 Ontology     | Term name              | Required/Optional | Description
 --------     | ---------              | ----------------- | -----------
+RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Catalog`
 DC terms     | dct:title              | `Required`        | Name of the catalog with the language tag
 |            | dct:hasVersion         | `Required`        | Version of the catalog
 |            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the catalog
@@ -155,6 +157,7 @@ An example of catalog metadata.
 
 Ontology     | Term name              | Required/Optional | Description
 ---          | ---                    | ---               | ---
+RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Dataset`
 DC terms     | dct:title              | `Required`        | Name of the dataset with the language tag 
 |            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the dataset
 |            | dct:hasVersion         | `Required`        | Version of the dataset 
@@ -218,6 +221,7 @@ An example of dataset metadata.
 
 Ontology     | Term name              | Required/Optional | Description
 --------     | ---------              | ----------------- | -----------
+RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Distribution`
 DC terms     | dct:title              | `Required`        | Name of the data distribution with the language tag
 |            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (for example ShEx)
 |            | dct:license            | `Required`        | Link to the license description
@@ -276,8 +280,9 @@ The data record metadata aims to describe a [distribution's](#distribution-metad
 
 Ontology     | Term name              | Required/Optional | Description
 ---          | ---                    | ---               | ---
+RDF          | rdf:type               | `Required`        | Required to be of type `fdp:DataRecord`
 DC terms     | dct:title              | `Required`        | Name of the datarecord with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the datarecord metadata schema (ShEx)
+|            | dct:conformsTo         | Optional          | The specification of the datarecord metadata schema (for example ShEx)
 |            | dct:license            | `Required`        | Link to the license description
 |            | dct:hasVersion         | `Required`        | Version of the datarecord
 |            | dct:issued             | Optional          | Created date of the rml mappings
