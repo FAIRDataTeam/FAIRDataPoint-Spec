@@ -20,29 +20,29 @@ The FAIR Data Point metadata contains information about the FDP itself and its g
 
 FDP metadata content table 
 
-Ontology     | Term name                | Required/Optional | Description
------------- | ------------------------ | ----------------- | -----------
-RDF          | rdf:type                 | `Required`        | Required to be of type `r3d:Repository`
-DC terms     | dct:title                | `Required`        | Name of the repository with the language tag
-|            | dct:hasVersion           | `Required`        | Version of the repository
-|            | dct:description          | Optional          | Description of the repository with  the language tag
-|            | dct:publisher            | `Required`        | Organisation(s) responsible for the repository
-|            | dct:language             | Optional          | 
-|            | dct:license              | Optional          | 
-|            | dct:conformsTo           | Optional          | The specification of the repository metadata schema (for example ShEx)
-|            | dct:rights               | Optional          | 
-|            | dct:references           | Optional          | Reference to documentation (API or otherwise).
-|            | dct:accessRights         | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-FDP ontology | fdp:metadataIdentifier   | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued       | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified     | `Required`        | Last modified date of the metadata entry
-RDF Schema   | rdfs:label               | Optional          | Name of the repository with the language tag 
-RE3Data      | r3d:institution          | Optional          | 
-|            | r3d:startDate            | Optional          | Release date of the repository
-|            | r3d:lastUpdate           | Optional          | Last update timestamp of the repository
-|            | r3d:dataCatalog          | `Required`        | List of catalog metadata URLs
-|            | r3d:country              | Optional          |  
-|            | r3d:repositoryIdentifier | `Required`        | Identifier of the repository.
+Ontology     | Term name                | Datatype | Required/Optional | Description
+------------ | ------------------------ |----------- |----------------- | -----------
+RDF          | rdf:type                 | | `Required`        | Required to be of type `r3d:Repository`
+DC terms     | dct:title                | | `Required`        | Name of the repository with the language tag
+|            | dct:hasVersion           | | `Required`        | Version of the repository
+|            | dct:description          | | Optional          | Description of the repository with  the language tag
+|            | dct:publisher            | | `Required`        | Organisation(s) responsible for the repository
+|            | dct:language             | | Optional          | 
+|            | dct:license              | | Optional          | 
+|            | dct:conformsTo           | | Optional          | The specification of the repository metadata schema (for example ShEx)
+|            | dct:rights               | | Optional          | 
+|            | dct:references           | | Optional          | Reference to documentation (API or otherwise).
+|            | dct:accessRights         | | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+FDP ontology | fdp:metadataIdentifier   | | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued       | | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified     | | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label               | | Optional          | Name of the repository with the language tag 
+RE3Data      | r3d:institution          | | Optional          | 
+|            | r3d:startDate            | | Optional          | Release date of the repository
+|            | r3d:lastUpdate           | | Optional          | Last update timestamp of the repository
+|            | r3d:dataCatalog          | | `Required`        | List of catalog metadata URLs
+|            | r3d:country              | | Optional          |  
+|            | r3d:repositoryIdentifier | | `Required`        | Identifier of the repository.
 
 An example of FDP metadata
 
