@@ -31,12 +31,14 @@ DC terms     | dct:title                | `Required`        | Name of the reposi
 |            | dct:conformsTo           | Optional          | The specification of the repository metadata schema (for example ShEx)
 |            | dct:rights               | Optional          | 
 |            | dct:references           | Optional          | Reference to documentation (API or otherwise).
+|            | dct:accessRights         | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
 FDP ontology | fdp:metadataIdentifier   | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued       | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified     | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label               | Optional          | Name of the repository with the language tag 
 RE3Data      | r3d:institution          | Optional          | 
 |            | r3d:startDate            | Optional          | Release date of the FDP.
+|            | r3d:lastUpdate           | Optional          | Last update timestamp of the FDP.
 |            | r3d:dataCatalog          | `Required`        | 
 |            | r3d:country              | Optional          |  
 |            | r3d:repositoryIdentifier | `Required`        | Identifier of the repository.
@@ -105,7 +107,9 @@ DC terms     | dct:title              | `Required`        | Name of the catalog 
 |            | dct:modified           | Optional          | Last modified date of the catalog entry
 |            | dct:conformsTo         | Optional          | The specification of the catalog metadata schema (ShEx)
 |            | dct:rights             | Optional          | 
-FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the catalog with the language tag
@@ -161,7 +165,9 @@ DC terms     | dct:title              | `Required`        | Name of the dataset 
 |            | dct:language           | Optional          | 
 |            | dct:license            | Optional          | 
 |            | dct:rights             | Optional          | 
-FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the dataset with the language tag
@@ -220,7 +226,9 @@ DC terms     | dct:title              | `Required`        | Name of the data dis
 |            | dct:modified           | Optional          | Last modified date of the distribution entry
 |            | dct:rights             | Optional          | 
 |            | dct:description        | Optional          | Description of the description with the language tag
-FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 RDF Schema   | rdfs:label             | Optional          | Name of the data distribution with the language tag
@@ -274,7 +282,9 @@ DC terms     | dct:title              | `Required`        | Name of the datareco
 |            | dct:modified           | Optional          | Last modified date of the rml mappings
 |            | dct:rights             | Optional          | 
 |            | dct:description        | Optional          | Description of the description with the language tag
-FDP ontology | fdp:metadataIdentifier | `Required`        | 
+|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
 |            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
 |            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
 |            | fdp:rmlMapping         | `Required`        | Link to the generic rml mapping
