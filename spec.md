@@ -105,7 +105,7 @@ DC terms     | dct:title              | `Required`        | Name of the catalog 
 |            | dct:license            | Optional          | 
 |            | dct:issued             | Optional          | Created date of the catalog entry
 |            | dct:modified           | Optional          | Last modified date of the catalog entry
-|            | dct:conformsTo         | Optional          | The specification of the catalog metadata schema (ShEx)
+|            | dct:conformsTo         | Optional          | The specification of the catalog metadata schema (for example ShEx)
 |            | dct:rights             | Optional          | 
 |            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
 |            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
@@ -159,7 +159,7 @@ DC terms     | dct:title              | `Required`        | Name of the dataset 
 |            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the dataset
 |            | dct:hasVersion         | `Required`        | Version of the dataset 
 |            | dct:description        | Optional          | Description of the dataset with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the dataset metadata schema (ShEx)
+|            | dct:conformsTo         | Optional          | The specification of the dataset metadata schema (for example ShEx)
 |            | dct:issued             | Optional          | Created date of the dataset entry
 |            | dct:modified           | Optional          | Last modified date of the dataset entry 
 |            | dct:language           | Optional          | 
@@ -219,7 +219,7 @@ An example of dataset metadata.
 Ontology     | Term name              | Required/Optional | Description
 --------     | ---------              | ----------------- | -----------
 DC terms     | dct:title              | `Required`        | Name of the data distribution with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (ShEx)
+|            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (for example ShEx)
 |            | dct:license            | `Required`        | Link to the license description
 |            | dct:hasVersion         | `Required`        | Version of the distribution
 |            | dct:issued             | Optional          | Created date of the distribution entry
@@ -234,7 +234,7 @@ FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the me
 RDF Schema   | rdfs:label             | Optional          | Name of the data distribution with the language tag
 DCAT         | dcat:accessURL         | `Required` (or dcat:downloadURL) | A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
 |            | dcat:downloadURL       | `Required` (or dcat:accessURL)   | A file that contains the distribution of the dataset in a given format
-|            | dcat:mediaType         | `Required`        | (Only for dcat:downloadURL) 
+|            | dcat:mediaType         | `Required`        | The media type of the distribution
 |            | dcat:format            | Optional          | 
 |            | dcat:byteSize          | Optional          | 
  
