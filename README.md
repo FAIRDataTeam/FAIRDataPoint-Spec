@@ -101,7 +101,7 @@ The FDP has initially two usage purposes: _(i)_ to be used as a stand-alone web 
 
 In this section we use elements from the Archimate notation. The ArchiMate modelling language is an open and independent Enterprise Architecture standard that supports the description, analysis and visualisation of architecture within and across business domains. ArchiMate is one of the open standards hosted by The Open Group and is fully aligned with TOGAF.
 
-Figure 5 depicts a view of the current architecture of the FDP using Archimate's Application layer notation. From top down, we have the Archimate's Application Interface representing the FDP's API. This API is currently composed of two parts, the Metadata Provider API and the FAIR Data Accessor API. The Metadata Provider API is the public interface of the Metadata Provider Service. Similarly, the FAIR Data Accessor API is the public interface of the FAIR Data Accessor Service.
+Figure 4 depicts a view of the current architecture of the FDP using Archimate's Application layer notation. From top down, we have the Archimate's Application Interface representing the FDP's API. This API is currently composed of two parts, the Metadata Provider API and the FAIR Data Accessor API. The Metadata Provider API is the public interface of the Metadata Provider Service. Similarly, the FAIR Data Accessor API is the public interface of the FAIR Data Accessor Service.
 
 The Metadata Provider Service realises the Metadata Retrieval function while the FAIR Data Accessor Service realises the Data Access function. As sub-functions of the Metadata Retrieval function we have:
 
@@ -116,7 +116,7 @@ The FAIR Data Accessor Service realises the Data Access function. In its turn, t
 The details of what each of these metadata object represent are given in the Metadata section below in this document. Also, the details of the FAIR Data Point API are given below in this document at the Application Programming Interface (API) section.
 
 ![FDPs’ Archimate Application layer architecture](images/FDP_metadata.png)
-Fig. 5 - FDPs’ Archimate Application layer architecture
+Fig. 4 - FDPs’ Archimate Application layer architecture
 
 # Metadata model specification
 See [spec.md](spec.md) for the metadata model specification.

@@ -319,4 +319,3 @@ The figure below illustrate the Access rights rdf model
 <p align="center"> 
      <img src="https://github.com/DTL-FAIRData/FAIRDataPoint/blob/wiki/FDP_access_control_dcterms_based.svg">
 </p> 
-<p align="center"> Fig. 4 - Access rights model</p>
