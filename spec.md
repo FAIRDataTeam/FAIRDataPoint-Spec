@@ -20,29 +20,29 @@ The FAIR Data Point metadata contains information about the FDP itself and its g
 
 FDP metadata content table 
 
-Ontology     | Term name                | Datatype | Required/Optional | Description
------------- | ------------------------ |----------- |----------------- | -----------
-RDF          | rdf:type                 | | `Required`        | Required to be of type `r3d:Repository`
-DC terms     | dct:title                | | `Required`        | Name of the repository with the language tag
-|            | dct:hasVersion           | | `Required`        | Version of the repository
-|            | dct:description          | | Optional          | Description of the repository with  the language tag
-|            | dct:publisher            | | `Required`        | Organisation(s) responsible for the repository
-|            | dct:language             | | Optional          | 
-|            | dct:license              | | Optional          | 
-|            | dct:conformsTo           | | Optional          | The specification of the repository metadata schema (for example ShEx)
-|            | dct:rights               | | Optional          | 
-|            | dct:references           | | Optional          | Reference to documentation (API or otherwise).
-|            | dct:accessRights         | | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-FDP ontology | fdp:metadataIdentifier   | | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued       | | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified     | | `Required`        | Last modified date of the metadata entry
-RDF Schema   | rdfs:label               | | Optional          | Name of the repository with the language tag 
-RE3Data      | r3d:institution          | | Optional          | 
-|            | r3d:startDate            | | Optional          | Release date of the repository
-|            | r3d:lastUpdate           | | Optional          | Last update timestamp of the repository
-|            | r3d:dataCatalog          | | `Required`        | List of catalog metadata URLs
-|            | r3d:country              | | Optional          |  
-|            | r3d:repositoryIdentifier | | `Required`        | Identifier of the repository.
+Ontology     | Term name                | Datatype   | Required/Optional | Description
+------------ | ------------------------ | ---------- | ----------------- | -----------
+RDF          | rdf:type                 | IRI        | `Required`        | Required to be of type `r3d:Repository`
+DC terms     | dct:title                | String     | `Required`        | Name of the repository with the language tag
+|            | dct:hasVersion           | String     | `Required`        | Version of the repository
+|            | dct:description          | String     | Optional          | Description of the repository with  the language tag
+|            | dct:publisher            | IRI        | `Required`        | Organisation(s) responsible for the repository
+|            | dct:language             | IRI        | Optional          | 
+|            | dct:license              | IRI        | Optional          | 
+|            | dct:conformsTo           | IRI        | Optional          | The specification of the repository metadata schema (for example ShEx)
+|            | dct:rights               | IRI        | Optional          | 
+|            | dct:references           | IRI        | Optional          | Reference to documentation (API or otherwise).
+|            | dct:accessRights         | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+FDP ontology | fdp:metadataIdentifier   | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued       | DateTime   | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified     | DateTime   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label               | String     | Optional          | Name of the repository with the language tag 
+RE3Data      | r3d:institution          | IRI        | Optional          | 
+|            | r3d:startDate            | DateTime   | Optional          | Release date of the repository
+|            | r3d:lastUpdate           | DateTime   | Optional          | Last update timestamp of the repository
+|            | r3d:dataCatalog          | IRI        | `Required`        | List of catalog metadata URLs
+|            | r3d:country              | IRI        | Optional          |  
+|            | r3d:repositoryIdentifier | IRI        | `Required`        | Identifier of the repository.
 
 An example of FDP metadata
 
@@ -96,28 +96,28 @@ For the representation of the catalog of datasets, each one of the offered datas
 
 Catalog metadata content table 
 
-Ontology     | Term name              | Required/Optional | Description
---------     | ---------              | ----------------- | -----------
-RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Catalog`
-DC terms     | dct:title              | `Required`        | Name of the catalog with the language tag
-|            | dct:hasVersion         | `Required`        | Version of the catalog
-|            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the catalog
-|            | dct:description        | Optional          | Description of the catalog with the language tag
-|            | dct:language           | Optional          | 
-|            | dct:license            | Optional          | 
-|            | dct:issued             | Optional          | Created date of the catalog entry
-|            | dct:modified           | Optional          | Last modified date of the catalog entry
-|            | dct:conformsTo         | Optional          | The specification of the catalog metadata schema (for example ShEx)
-|            | dct:rights             | Optional          | 
-|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
-FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
-RDF Schema   | rdfs:label             | Optional          | Name of the catalog with the language tag
-FOAF         | foaf:homepage          | Optional          | 
-DCAT         | dcat:dataset           | `Required`        | List of dataset URLs
-|            | dcat:themeTaxonomy     | `Required`        | List of taxonomy URLs
+Ontology     | Term name              | DataType   | Required/Optional | Description
+--------     | ---------              | ---------- | ----------------- | -----------
+RDF          | rdf:type               | IRI        | `Required`        | Required to be of type `dcat:Catalog`
+DC terms     | dct:title              | String     | `Required`        | Name of the catalog with the language tag
+|            | dct:hasVersion         | String     | `Required`        | Version of the catalog
+|            | dct:publisher          | IRI        | `Required`        | Organisation(s)  or Persons(s) responsible for the catalog
+|            | dct:description        | String     | Optional          | Description of the catalog with the language tag
+|            | dct:language           | IRI        | Optional          | 
+|            | dct:license            | IRI        | Optional          | 
+|            | dct:issued             | DateTime   | Optional          | Created date of the catalog entry
+|            | dct:modified           | DateTime   | Optional          | Last modified date of the catalog entry
+|            | dct:conformsTo         | IRI        | Optional          | The specification of the catalog metadata schema (for example ShEx)
+|            | dct:rights             | IRI        | Optional          | 
+|            | dct:accessRights       | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | IRI        | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued     | DateTime   | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | DateTime   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | String     | Optional          | Name of the catalog with the language tag
+FOAF         | foaf:homepage          | IRI        | Optional          | 
+DCAT         | dcat:dataset           | IRI        | `Required`        | List of dataset URLs
+|            | dcat:themeTaxonomy     | IRI        | `Required`        | List of taxonomy URLs
  
 An example of catalog metadata.
 
@@ -155,30 +155,30 @@ An example of catalog metadata.
 
 ### Dataset metadata layer
 
-Ontology     | Term name              | Required/Optional | Description
----          | ---                    | ---               | ---
-RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Dataset`
-DC terms     | dct:title              | `Required`        | Name of the dataset with the language tag 
-|            | dct:publisher          | `Required`        | Organisation(s)  or Persons(s) responsible for the dataset
-|            | dct:hasVersion         | `Required`        | Version of the dataset 
-|            | dct:description        | Optional          | Description of the dataset with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the dataset metadata schema (for example ShEx)
-|            | dct:issued             | Optional          | Created date of the dataset entry
-|            | dct:modified           | Optional          | Last modified date of the dataset entry 
-|            | dct:language           | Optional          | 
-|            | dct:license            | Optional          | 
-|            | dct:rights             | Optional          | 
-|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
-FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
-RDF Schema   | rdfs:label             | Optional          | Name of the dataset with the language tag
-DCAT         | dcat:distribution      | `Required`        | List of distribution URLs
-|            | dcat:theme             | `Required`        | List of concepts that describe the dataset
-|            | dcat:contactPoint      | Optional          | 
-|            | dcat:keyword           | Optional          | Keyword(s) related to the dataset with the language tag 
-|            | dcat:landingPage       | Optional          | Home page of the dataset
+Ontology     | Term name              | DataType   | Required/Optional | Description
+---          | ---                    | --------   |---                | ---
+RDF          | rdf:type               | IRI        | `Required`        | Required to be of type `dcat:Dataset`
+DC terms     | dct:title              | String     | `Required`        | Name of the dataset with the language tag 
+|            | dct:publisher          | IRI        | `Required`        | Organisation(s)  or Persons(s) responsible for the dataset
+|            | dct:hasVersion         | String     | `Required`        | Version of the dataset 
+|            | dct:description        | String     | Optional          | Description of the dataset with the language tag
+|            | dct:conformsTo         | IRI        | Optional          | The specification of the dataset metadata schema (for example ShEx)
+|            | dct:issued             | DateTime   | Optional          | Created date of the dataset entry
+|            | dct:modified           | DateTime   | Optional          | Last modified date of the dataset entry 
+|            | dct:language           | IRI        | Optional          | 
+|            | dct:license            | IRI        | Optional          | 
+|            | dct:rights             | IRI        | Optional          | 
+|            | dct:accessRights       | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | IRI        | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued     | DateTime   | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | DateTime   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | String     | Optional          | Name of the dataset with the language tag
+DCAT         | dcat:distribution      | IRI        | `Required`        | List of distribution URLs
+|            | dcat:theme             | IRI        | `Required`        | List of concepts that describe the dataset
+|            | dcat:contactPoint      | IRI        | Optional          | 
+|            | dcat:keyword           | String     | Optional          | Keyword(s) related to the dataset with the language tag 
+|            | dcat:landingPage       | IRI        | Optional          | Home page of the dataset
 
 An example of dataset metadata.
 
@@ -219,28 +219,28 @@ An example of dataset metadata.
 ```
 ### Distribution metadata layer
 
-Ontology     | Term name              | Required/Optional | Description
---------     | ---------              | ----------------- | -----------
-RDF          | rdf:type               | `Required`        | Required to be of type `dcat:Distribution`
-DC terms     | dct:title              | `Required`        | Name of the data distribution with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the distribution metadata schema (for example ShEx)
-|            | dct:license            | `Required`        | Link to the license description
-|            | dct:hasVersion         | `Required`        | Version of the distribution
-|            | dct:issued             | Optional          | Created date of the distribution entry
-|            | dct:modified           | Optional          | Last modified date of the distribution entry
-|            | dct:rights             | Optional          | 
-|            | dct:description        | Optional          | Description of the description with the language tag
-|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
-FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
-RDF Schema   | rdfs:label             | Optional          | Name of the data distribution with the language tag
-DCAT         | dcat:accessURL         | `Required` (or dcat:downloadURL) | A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
-|            | dcat:downloadURL       | `Required` (or dcat:accessURL)   | A file that contains the distribution of the dataset in a given format
-|            | dcat:mediaType         | `Required`        | The media type of the distribution
-|            | dcat:format            | Optional          | 
-|            | dcat:byteSize          | Optional          | 
+Ontology     | Term name              | DataType   | Required/Optional | Description
+--------     | ---------              | --------   | ----------------  | -----------
+RDF          | rdf:type               | IRI        | `Required`        | Required to be of type `dcat:Distribution`
+DC terms     | dct:title              | String     | `Required`        | Name of the data distribution with the language tag
+|            | dct:conformsTo         | IRI        | Optional          | The specification of the distribution metadata schema (for example ShEx)
+|            | dct:license            | IRI        | `Required`        | Link to the license description
+|            | dct:hasVersion         | String     | `Required`        | Version of the distribution
+|            | dct:issued             | DateTime   | Optional          | Created date of the distribution entry
+|            | dct:modified           | DateTime   | Optional          | Last modified date of the distribution entry
+|            | dct:rights             | IRI        | Optional          | 
+|            | dct:description        | String     | Optional          | Description of the description with the language tag
+|            | dct:accessRights       | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | IRI        | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued     | DateTime   | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | DateTime   | `Required`        | Last modified date of the metadata entry
+RDF Schema   | rdfs:label             | String     | Optional          | Name of the data distribution with the language tag
+DCAT         | dcat:accessURL         | IRI        | `Required` (or dcat:downloadURL) | A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
+|            | dcat:downloadURL       | IRI        | `Required` (or dcat:accessURL)   | A file that contains the distribution of the dataset in a given format
+|            | dcat:mediaType         | String     | `Required`        | The media type of the distribution
+|            | dcat:format            | String     | Optional          | 
+|            | dcat:byteSize          | Decimal    | Optional          | 
  
 
 
@@ -278,25 +278,25 @@ An example of distribution metadata.
 ### Data record metadata layer
 The data record metadata aims to describe a [distribution's](#distribution-metadata-layer) data on the format content level. The specification of this layer is still a work in progress. The model as described below is a draft of the data record metadata.
 
-Ontology     | Term name              | Required/Optional | Description
----          | ---                    | ---               | ---
-RDF          | rdf:type               | `Required`        | Required to be of type `fdp:DataRecord`
-DC terms     | dct:title              | `Required`        | Name of the datarecord with the language tag
-|            | dct:conformsTo         | Optional          | The specification of the datarecord metadata schema (for example ShEx)
-|            | dct:license            | `Required`        | Link to the license description
-|            | dct:hasVersion         | `Required`        | Version of the datarecord
-|            | dct:issued             | Optional          | Created date of the rml mappings
-|            | dct:modified           | Optional          | Last modified date of the rml mappings
-|            | dct:rights             | Optional          | 
-|            | dct:description        | Optional          | Description of the description with the language tag
-|            | dct:accessRights       | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-|            | dct:isPartOf           | `Required`        | Relation to the parent metadata.
-FDP ontology | fdp:metadataIdentifier | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued     | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified   | `Required`        | Last modified date of the metadata entry
-|            | fdp:rmlMapping         | `Required`        | Link to the generic rml mapping
-|            | fdp:rmlInputSource     | Optional          | Distribution used to generate RDF
-RDF Schema   | rdfs:label             | Optional          | Name of the data datarecord with the language tag
+Ontology     | Term name              | DataType   | Required/Optional | Description
+---          | ---                    | --------   |---                | ---
+RDF          | rdf:type               | IRI        | `Required`        | Required to be of type `fdp:DataRecord`
+DC terms     | dct:title              | String     | `Required`        | Name of the datarecord with the language tag
+|            | dct:conformsTo         | IRI        | Optional          | The specification of the datarecord metadata schema (for example ShEx)
+|            | dct:license            | IRI        | `Required`        | Link to the license description
+|            | dct:hasVersion         | String     | `Required`        | Version of the datarecord
+|            | dct:issued             | DateTime   | Optional          | Created date of the rml mappings
+|            | dct:modified           | DateTime   | Optional          | Last modified date of the rml mappings
+|            | dct:rights             | IRI        | Optional          | 
+|            | dct:description        | String     | Optional          | Description of the description with the language tag
+|            | dct:accessRights       | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
+|            | dct:isPartOf           | IRI        | `Required`        | Relation to the parent metadata.
+FDP ontology | fdp:metadataIdentifier | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
+|            | fdp:metadataIssued     | DateTime   | `Required`        | Created date of the metadata entry
+|            | fdp:metadataModified   | DateTime   | `Required`        | Last modified date of the metadata entry
+|            | fdp:rmlMapping         | IRI        | `Required`        | Link to the generic rml mapping
+|            | fdp:rmlInputSource     | IRI        | Optional          | Distribution used to generate RDF
+RDF Schema   | rdfs:label             | String     | Optional          | Name of the data datarecord with the language tag
 
 An example of data record metadata
 ```ttl
