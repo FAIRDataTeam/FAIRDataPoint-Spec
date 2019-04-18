@@ -11,7 +11,6 @@ Table of contents
   - [Catalog metadata layer](#catalog-metadata-layer)
   - [Dataset metadata layer](#dataset-metadata-layer)
   - [Distribution metadata layer](#distribution-metadata-layer)
-  - [Data record metadata layer](#data-record-metadata-layer)
 - [Access rights rdf model](#access-rights-rdf-model)
 
 ## FAIR Data Point metadata layer
