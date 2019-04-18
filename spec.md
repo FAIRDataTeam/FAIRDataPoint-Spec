@@ -4,6 +4,9 @@ The FAIR Data Point's metadata layered approach is composed of five layers, name
 
 For an overview of the FDP motivation and design, see [README.md](README.md).
 
+# Version
+The specification is currently at version [0.1.0](/../../releases/tag/v0.1.0).
+
 Table of contents
 ===
 - [FAIR Data Point metadata layer](#fair-data-point-metadata-layer)
