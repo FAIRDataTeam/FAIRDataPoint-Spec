@@ -11,7 +11,6 @@ Table of contents
   - [Catalog metadata layer](#catalog-metadata-layer)
   - [Dataset metadata layer](#dataset-metadata-layer)
   - [Distribution metadata layer](#distribution-metadata-layer)
-  - [Data record metadata layer](#data-record-metadata-layer)
 - [Access rights rdf model](#access-rights-rdf-model)
 
 ## FAIR Data Point metadata layer
@@ -47,42 +46,44 @@ RE3Data      | r3d:institution          | IRI        | Optional          |
 An example of FDP metadata
 
 ```ttl
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix dcat: <http://www.w3.org/ns/dcat#> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix owl: <http://www.w3.org/2002/07/owl#> .
-    @prefix dct: <http://purl.org/dc/terms/> .
-    @prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-    @prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
-    @prefix r3d: <http://www.re3data.org/schema/3-0#> .
-    @prefix foaf: <http://xmlns.com/foaf/> .
-    
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp> dct:alternative "DTL FDP"@en ;
-        dct:description "The DTL FAIR Data Point hosts the FAIR Data versions of datasets that have been made FAIR during BYODs as well as other relevant life sciences datasets"@en ;
-        dct:title "DTL FAIR Data Point"@en ;
-        dct:hasVersion  "1.0" ;
-        dct:publisher   <http://dtls.nl> ;
-        fdp:metadataIdentifier <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp-metadataID> ;
-        fdp:metadataIssued "2016-10-27"^^xsd:date ;
-        fdp:metadataModified "2016-10-27"^^xsd:date ;
-    r3d:repositoryIdentifier <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp-repositoryID> ;
-    r3d:dataCatalog <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/biobank> , <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics> , <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/patient-registry> , <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/textmining> , <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/transcriptomics> ;
-    r3d:institution <http://dtls.nl> ;
-    r3d:institutionCountry <http://lexvo.org/id/iso3166/NL> ;
-    r3d:lastUpdate "2016-10-27"^^xsd:date ;
-    r3d:startDate "2016-10-27"^^xsd:date ;
-    a r3d:Repository ;
-    rdfs:label "DTL FAIR Data Point"@en .
-         
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp-metadataID> a <http://edamontology.org/data_0842>;
-        dct:identifier "fdp-metadataID".
-    
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp-repositoryID> a <http://edamontology.org/data_0842>;
-        dct:identifier "fdp-repositoryID".
- 
-    <http://dtls.nl> a foaf:Organization;
-        foaf:name "DTLS"@en.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix r3d: <http://www.re3data.org/schema/3-0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://136.243.4.200:8087/fdp> a r3d:Repository;
+  dcterms:accessRights <http://136.243.4.200:8087/fdp/accessRights>;
+  dcterms:conformsTo <http://rdf.biosemantics.org/fdp/shex/fdpMetadata>;
+  dcterms:description "This is a prototype FDP for hosting research and student projects datasets";
+  dcterms:hasVersion "1.0";
+  dcterms:language lang:en;
+  dcterms:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0>;
+  dcterms:publisher <http://biosemantics.org>;
+  dcterms:title "FDP of biosemantics group";
+  fdp:metadataIdentifier <http://purl.org/biosemantics-lumc/fdp>;
+  fdp:metadataIssued "2017-05-23T09:43:15.57Z"^^xsd:dateTime;
+  fdp:metadataModified "2018-08-20T13:09:55"^^xsd:dateTime;
+  r3d:dataCatalog <http://136.243.4.200:8087/fdp/catalog/Biosamples>, <http://136.243.4.200:8087/fdp/catalog/multiomics>, 
+       <http://136.243.4.200:8087/fdp/catalog/textmining>;
+  r3d:institutionCountry <http://lexvo.org/id/iso3166/NL>;
+  r3d:repositoryIdentifier <http://136.243.4.200:8087/fdp#repositoryID>;
+  rdfs:label "FDP of biosemantics group";
+  dcterms:references <http://136.243.4.200:8087/fdp/swagger-ui.html> .
+
+<http://purl.org/biosemantics-lumc/fdp> a <http://purl.org/spar/datacite/ResourceIdentifier>;
+  dcterms:identifier "fdp" .
+
+<http://biosemantics.org> a <http://xmlns.com/foaf/0.1/Organization>;
+  <http://xmlns.com/foaf/0.1/name> "Biosemantic group" .
+
+<http://136.243.4.200:8087/fdp/accessRights> a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://136.243.4.200:8087/fdp#repositoryID> a <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "176c810f-504a-421a-903b-742a70c2806a" .
 ```
 
 ## Catalog, Dataset and Distribution metadata layers
@@ -122,35 +123,39 @@ DCAT         | dcat:dataset           | IRI        | `Required`        | List of
 An example of catalog metadata.
 
 ```ttl
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix dcat: <http://www.w3.org/ns/dcat#> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix owl: <http://www.w3.org/2002/07/owl#> .
-    @prefix dct: <http://purl.org/dc/terms/> .
-    @prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-    @prefix foaf: <http://xmlns.com/foaf/> .
-    @prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
-    
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics> dct:hasVersion "1.0" ;
-        dct:publisher   <http://dtls.nl> ;
-        fdp:metadataIdentifier <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics-metadataID> ;
-        fdp:metadataIssued "2016-10-27"^^xsd:date ;
-        fdp:metadataModified "2016-10-27"^^xsd:date ;
-        dct:issued "2016-10-27"^^xsd:date ;
-        dct:modified "2016-10-27"^^xsd:date ;
-        dct:language lang:en ;
-        dct:title "Catalog for comparative genomics datasets"@en ;
-        a dcat:Catalog ;
-        rdfs:label "Catalog for comparative genomics datasets"@en ;
-        dcat:dataset <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5> ;
-        dcat:themeTaxonomy <http://dbpedia.org/resource/Comparative_genomics> , <http://edamontology.org/topic_0797> .
-     
-    <http://dtls.nl> a foaf:Organization;
-        foaf:name "DTLS"@en.
-    
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics-metadataID> a <http://edamontology.org/data_0842>;
-        dct:identifier "comparativeGenomics-metadataID".
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://136.243.4.200:8087/fdp/catalog/textmining> a dcat:Catalog;
+  dcterms:accessRights <http://136.243.4.200:8087/fdp/catalog/textmining#accessRights>;
+  dcterms:conformsTo <https://www.purl.org/fairtools/fdp/schema/0.1/catalogMetadata>;
+  dcterms:description "Catalog for describing textmining datasets";
+  dcterms:hasVersion "1.0";
+  dcterms:isPartOf <http://136.243.4.200:8087/fdp>;
+  dcterms:language lang:en;
+  dcterms:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0>;
+  dcterms:publisher <http://biosemantics.org>;
+  dcterms:title "Catalog for textmining datasets";
+  fdp:metadataIdentifier <http://purl.org/biosemantics-lumc/fdp/catalog/textmining>;
+  fdp:metadataIssued "2018-03-20T10:20:37.08Z"^^xsd:dateTime;
+  fdp:metadataModified "2018-08-20T13:09:55"^^xsd:dateTime;
+  rdfs:label "Catalog for textmining datasets";
+  dcat:dataset <http://136.243.4.200:8087/fdp/dataset/gene_disease_association>;
+  dcat:themeTaxonomy <http://dbpedia.org/resource/Text_mining>, <http://edamontology.org/topic_0218> .
+
+<http://purl.org/biosemantics-lumc/fdp/catalog/textmining> a <http://purl.org/spar/datacite/ResourceIdentifier>;
+  dcterms:identifier "textmining" .
+
+<http://biosemantics.org> a <http://xmlns.com/foaf/0.1/Agent>;
+  <http://xmlns.com/foaf/0.1/name> "Biosemantic group" .
+
+<http://136.243.4.200:8087/fdp/catalog/textmining#accessRights> a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
 ```
 
 ### Dataset metadata layer
@@ -183,39 +188,42 @@ DCAT         | dcat:distribution      | IRI        | `Required`        | List of
 An example of dataset metadata.
 
 ```ttl
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix dcat: <http://www.w3.org/ns/dcat#> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix owl: <http://www.w3.org/2002/07/owl#> .
-    @prefix dct: <http://purl.org/dc/terms/> .
-    @prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-    @prefix foaf: <http://xmlns.com/foaf/> .
-    @prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
-     
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5> dct:publisher    <http://www.nlgenome.nl> ;
-        dct:description "The dataset contain 27.8k SV calls (>20bp). Calling was realized using 10 different approaches (see below) and a consensus strategy was used to produce this set. The SOURCE field in the INFO column lists all methods that called each of the events. As most methods do not report genotypes but rather presence/absence of an SV in an individual, we report here either a homozygous reference (0/0) in case of the absence of SV or a genotype with one alternative allele and one unknown allele (./1) in case of the presence of a SV"@en ;
-        dct:hasVersion "1.0" ;
-        fdp:metadataIdentifier <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5-metadataID> ;
-        fdp:metadataIssued "2016-10-27"^^xsd:date ;
-        fdp:metadataModified "2016-10-27"^^xsd:date ;
-        dct:issued "2016-10-27"^^xsd:date ;
-        dct:language lang:en ;
-        dct:modified "2016-10-27"^^xsd:date ;
-        dct:publisher <http://orcid.org/0000-0002-1215-167X> , <http://orcid.org/0000-0002-6816-4445> ;
-        dct:title "GoNL human variants"@en ;
-        a dcat:Dataset ;
-        rdfs:label "GoNL human variants"@en ;
-        dcat:distribution <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html> , <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/textfile-gzip> ;
-        dcat:keyword "GoNL" , "goNlSvR5" , "human" , "variant" ;
-        dcat:landingPage <http://www.genoomvannederland.nl/> ;
-        dcat:theme <http://dbpedia.org/resource/Homo_sapiens> , <http://dbpedia.org/resource/Mutation> .
-     
-    <http://www.nlgenome.nl> a foaf:Organization;
-        foaf:name "The Genome of the Netherlands"@en.
-     
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5-metadataID> a <http://edamontology.org/data_0842>;
-        dct:identifier "goNlSvR5-metadataID".
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://136.243.4.200:8087/fdp/dataset/gene_disease_association> a dcat:Dataset;
+  dcterms:accessRights <http://136.243.4.200:8087/fdp/dataset/gene_disease_association#accessRights>;
+  dcterms:conformsTo <https://www.purl.org/fairtools/fdp/schema/0.1/datasetMetadata>;
+  dcterms:description "High-throughput experimental methods such as medical sequencing and genome-wide association studies (GWAS) identify increasingly large numbers of potential relations between genetic variants and diseases. Both biological complexity (millions of potential gene-disease associations) and the accelerating rate of data production necessitate computational approaches to prioritize and rationalize potential gene-disease relations. Here, we use concept profile technology to expose from the biomedical literature both explicitly stated gene-disease relations (the explicitome) and a much larger set of implied gene-disease associations (the implicitome). Implicit relations are largely unknown to, or are even unintended by the original authors, but they vastly extend the reach of existing biomedical knowledge for identification and interpretation of gene-disease associations. The implicitome can be used in conjunction with experimental data resources to rationalize both known and novel associations. We demonstrate the usefulness of the implicitome by rationalizing known and novel gene-disease associations, including those from GWAS. To facilitate the re-use of implicit gene-disease associations, we publish our data in compliance with FAIR Data Publishing recommendations [https://www.force11.org/group/fairgroup] using nanopublications. An online tool (http://knowledge.bio) is available to explore established and potential gene-disease associations in the context of other biomedical relations.";
+  dcterms:hasVersion "1.0";
+  dcterms:isPartOf <http://136.243.4.200:8087/fdp/catalog/textmining>;
+  dcterms:language lang:en;
+  dcterms:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0>;
+  dcterms:publisher <http://biosemantics.org>;
+  dcterms:title "Gene disease association (LUMC)";
+  fdp:metadataIdentifier <http://purl.org/biosemantics-lumc/fdp/dataset/gene_disease_association>;
+  fdp:metadataIssued "2018-03-20T10:30:18.662Z"^^xsd:dateTime;
+  fdp:metadataModified "2018-08-20T13:09:55"^^xsd:dateTime;
+  rdfs:label "Gene disease association (LUMC)";
+  dcat:distribution <http://136.243.4.200:8087/fdp/distribution/gene_disease_association_csv_gzip>,
+    <http://136.243.4.200:8087/fdp/distribution/gene_disease_association_html>, <http://136.243.4.200:8087/fdp/distribution/gene_disease_association_nquads_gzip>;
+  dcat:keyword "GDA", "Gene disease association (LUMC)", "LWAS", "Text mining", "The Explicitome",
+    "The Implicitome";
+  dcat:theme <http://dbpedia.org/resource/Text_mining>, <http://semanticscience.org/resource/statistical-association> .
+
+<http://purl.org/biosemantics-lumc/fdp/dataset/gene_disease_association> a <http://purl.org/spar/datacite/ResourceIdentifier>;
+  dcterms:identifier "gene_disease_association" .
+
+<http://biosemantics.org> a <http://xmlns.com/foaf/0.1/Agent>;
+  <http://xmlns.com/foaf/0.1/name> "Biosemantic group" .
+
+<http://136.243.4.200:8087/fdp/dataset/gene_disease_association#accessRights> a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
 ```
 
 ### Distribution metadata layer
@@ -247,34 +255,42 @@ DCAT         | dcat:accessURL         | IRI        | `Required` (or dcat:downloa
 
 An example of distribution metadata.
 ```ttl
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix dcat: <http://www.w3.org/ns/dcat#> .
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix owl: <http://www.w3.org/2002/07/owl#> .
-    @prefix dct: <http://purl.org/dc/terms/> .
-    @prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-    @prefix foaf: <http://xmlns.com/foaf/> .
-    @prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
-     
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html> dct:hasVersion "1.0" ;
-        fdp:metadataIdentifier <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html-metadataID> ;
-        fdp:metadataIssued "2016-10-27"^^xsd:date ;
-        fdp:metadataModified "2016-10-27"^^xsd:date ;
-        dct:issued "2016-05-27T10:16:21+00:00"^^xsd:dateTime ;
-        dct:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0> ;
-        dct:modified "2016-05-27T10:16:21+00:00"^^xsd:dateTime ;
-        dct:title "GoNL web app"@en ;
-        a dcat:Distribution ;
-        rdfs:label "GoNL web app"@en ;
-        dcat:accessURL <http://www.nlgenome.nl/search/> ;
-        dcat:mediaType "text/html" .
-     
-    <http://www.nlgenome.nl> a foaf:Organization;
-        foaf:name "The Genome of the Netherlands"@en.
-     
-    <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html-metadataID> a <http://edamontology.org/data_0842>;
-        dct:identifier "html-metadataID".
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://136.243.4.200:8087/fdp/distribution/gene_disease_association_nquads_gzip>
+  a dcat:Distribution;
+  dcterms:accessRights <http://136.243.4.200:8087/fdp/distribution/gene_disease_association_nquads_gzip#accessRights>;
+  dcterms:conformsTo <https://www.purl.org/fairtools/fdp/schema/0.1/distributionMetadata>;
+  dcterms:description "The complete set of all ~204 million associations (explicit and implicit) as nanopublications. Each nanopublication asserts an association between a gene and a disease concept and the percentile rank of the match score.";
+  dcterms:hasVersion "1.0";
+  dcterms:isPartOf <http://136.243.4.200:8087/fdp/dataset/gene_disease_association>;
+  dcterms:language lang:en;
+  dcterms:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0>;
+  dcterms:publisher <http://biosemantics.org>;
+  dcterms:title "Gene disease association (LUMC) nquads as gzip distribution";
+  fdp:metadataIdentifier <http://purl.org/biosemantics-lumc/fdp/distribution/gene_disease_association_nquads_gzip>;
+  fdp:metadataIssued "2018-03-20T10:40:17.677Z"^^xsd:dateTime;
+  fdp:metadataModified "2018-08-20T13:09:55"^^xsd:dateTime;
+  rdfs:label "Gene disease association (LUMC) nquads as gzip distribution";
+  dcat:downloadURL <https://datadryad.org/bitstream/handle/10255/dryad.91060/gda-np.nq.gz?sequence=1>;
+  dcat:mediaType "application/gzip" .
+
+<http://purl.org/biosemantics-lumc/fdp/distribution/gene_disease_association_nquads_gzip>
+  a <http://purl.org/spar/datacite/ResourceIdentifier>;
+  dcterms:identifier "gene_disease_association_nquads_gzip" .
+
+<http://biosemantics.org> a <http://xmlns.com/foaf/0.1/Agent>;
+  <http://xmlns.com/foaf/0.1/name> "Biosemantic group" .
+
+<http://136.243.4.200:8087/fdp/distribution/gene_disease_association_nquads_gzip#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
 ```
 
 ## Access rights rdf model
