@@ -217,6 +217,7 @@ An example of dataset metadata.
     <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5-metadataID> a <http://edamontology.org/data_0842>;
         dct:identifier "goNlSvR5-metadataID".
 ```
+
 ### Distribution metadata layer
 
 Ontology     | Term name              | DataType   | Required/Optional | Description
@@ -274,56 +275,6 @@ An example of distribution metadata.
      
     <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/comparativeGenomics/goNlSvR5/html-metadataID> a <http://edamontology.org/data_0842>;
         dct:identifier "html-metadataID".
-```
-### Data record metadata layer
-The data record metadata aims to describe a [distribution's](#distribution-metadata-layer) data on the format content level. The specification of this layer is still a work in progress. The model as described below is a draft of the data record metadata.
-
-Ontology     | Term name              | DataType   | Required/Optional | Description
----          | ---                    | --------   |---                | ---
-RDF          | rdf:type               | IRI        | `Required`        | Required to be of type `fdp:DataRecord`
-DC terms     | dct:title              | String     | `Required`        | Name of the datarecord with the language tag
-|            | dct:conformsTo         | IRI        | Optional          | The specification of the datarecord metadata schema (for example ShEx)
-|            | dct:license            | IRI        | `Required`        | Link to the license description
-|            | dct:hasVersion         | String     | `Required`        | Version of the datarecord
-|            | dct:issued             | DateTime   | Optional          | Created date of the rml mappings
-|            | dct:modified           | DateTime   | Optional          | Last modified date of the rml mappings
-|            | dct:rights             | IRI        | Optional          | 
-|            | dct:description        | String     | Optional          | Description of the description with the language tag
-|            | dct:accessRights       | IRI        | Optional          | Description of the access rights, see [Access rights rdf model](#access-rights-rdf-model)
-|            | dct:isPartOf           | IRI        | `Required`        | Relation to the parent metadata.
-FDP ontology | fdp:metadataIdentifier | IRI        | `Required`        | Identifier of the metadata entry. Define new sub property ‘metadataID’ for dct:identifier 
-|            | fdp:metadataIssued     | DateTime   | `Required`        | Created date of the metadata entry
-|            | fdp:metadataModified   | DateTime   | `Required`        | Last modified date of the metadata entry
-|            | fdp:rmlMapping         | IRI        | `Required`        | Link to the generic rml mapping
-|            | fdp:rmlInputSource     | IRI        | Optional          | Distribution used to generate RDF
-RDF Schema   | rdfs:label             | String     | Optional          | Name of the data datarecord with the language tag
-
-An example of data record metadata
-```ttl
-@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-<> dct:title "An example data record metadata" ;
-    rdfs:label "An example data record metadata" ;
-    <http://rdf.biosemantics.org/ontologies/fdp-o#metadataIssued> "2016-10-27"^^xsd:date ;
-    <http://rdf.biosemantics.org/ontologies/fdp-o#metadataIdentifier> <http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/dataRecord-metadataID> ;
-    <http://rdf.biosemantics.org/ontologies/fdp-o#metadataModified> "2016-10-27"^^xsd:date ;
-    a fdp:DataRecord ; 
-    dct:identifier "dataRecord" ;
-    dct:language lang:en  ;
-    dct:hasVersion "1.0" ;
-    dct:publisher   <http://dtls.nl> ;
-    fdp:rmlMapping <https://git.lumc.nl/biosemantics/ring14-fdp-metadata/raw/bd01b84fb792ae3860fdda646e9cb96a1a11205c/rml/biobank/RING_14_biobank_mapping.ttl> ;
-    fdp:rmlInputSource <http://localhost.com/an-example-distribution>  .
-
-<http://dev-vm.fair-dtls.surf-hosted.nl:8082/fdp/dataRecord-metadataID> a <http://purl.org/spar/datacite/ResourceIdentifier> ;
-    dct:identifier "dataRecord-metadataID" .
-
-<http://dtls.nl> a foaf:Organization;
-    foaf:name "DTLS"@en.
 ```
 
 ## Access rights rdf model
