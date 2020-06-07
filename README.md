@@ -80,7 +80,7 @@ From the usage scenarios, we have identified a need for a data storage and acces
 Based on these goals, Figure 1 depicts the general architecture of an FDP. In this architecture, the FDP exposes its functionality to the users through an application programming interface (API) and a graphical user interface (GUI). The former is intended for software clients while the later for human clients. The figure also depicts four internal components, each one responsible for one of the four main behaviours expected from an FDP, namely, (i) provisioning of metadata information, (ii) access to the offered datasets, (iii) metrics gathering of metadata and data access and usage and, (iv) access control when the dataset's license imposes restrictions.
 
 <p align="center"> 
-     <img src="https://github.com/DTL-FAIRData/FAIRDataPoint/blob/wiki/FDP_GeneralArchitecture.png">
+     <img src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_GeneralArchitecture.png">
 </p> 
 <p align="center"> Fig. 1 - FDP General architecture based on the application's goals</p>
 
@@ -88,12 +88,12 @@ Based on these goals, Figure 1 depicts the general architecture of an FDP. In th
 
 The FDP has initially two usage purposes: _(i)_ to be used as a stand-alone web application, where data owners give access to their datasets in a FAIR manner and, _(ii)_ to be integrated in larger data interoperability systems, such as the FAIRport, providing the dataset accessibility functionality for such systems. Figure 2 depicts an FDP as a stand-alone application deployed in a web server, exposing to the Web its API and GUI. Figure 3 depicts a set of FDPs integrated as components in a Data FAIRport platform. In this case, each FDP gives access to the datasets published by a given data owner. Figure 4 depicts FDP's components being integrated into existing data repository solutions extending their features to include the provisioning of metadata and data in a FAIR way.
 <p align="center"> 
-    <img src="https://github.com/DTL-FAIRData/FAIRDataPoint/blob/wiki/FDP_standalone.jpeg" height="500">
+    <img src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_standalone.jpeg" height="500">
 </p>
 <p align="center"> Fig. 2 - FDP as a stand-alone Web application </p>
 
 <p align="center"> 
-    <img align="center" src="https://github.com/DTL-FAIRData/FAIRDataPoint/blob/wiki/FDP_appcomponent.jpeg"   height="250">
+    <img align="center" src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_appcomponent.jpeg"   height="250">
 </p>
 <p align="center"> Fig. 3 - FDP as an application component </p>
 
