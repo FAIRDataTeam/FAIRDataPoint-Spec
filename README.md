@@ -63,7 +63,7 @@ From the usage scenarios, we have identified a need for a metadata provisioning 
 Based on these goals, Figure 1 depicts the general architecture of an FDP. In this architecture, the FDP exposes its functionality to the users through an application programming interface (API). In our reference implementation, besides the FDP itself we developed a FDP web client, which connects to the FDP API and allows human users to interact with the application through a web-based interface. The figure also depicts the FDP's  internal components, each one responsible for one of the four main behaviours expected from an FDP, namely, (i) provisioning of metadata information, (ii) access to the offered datasets, (iii) metrics gathering of metadata and data access and usage and, (iv) access control when the dataset's license imposes restrictions.
 
 <p align="center"> 
-     <img src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_GeneralArchitecture.png">
+     <img src="https://github.com/FAIRDataTeam/FAIRDataPoint-Spec/blob/master/images/FDP%20architecture.png">
 </p> 
 <p align="center"> Fig. 1 - FDP General architecture based on the application's goals</p>
 
