@@ -1,5 +1,5 @@
 # FAIR Data Point design specification
-Specification for the FAIR DataPoint. The master branch will contain the latest stable release of the specification, while the [development branch](/../../tree/development) contains the latest working draft.
+Specification for the FAIR Data Point. The master branch will contain the latest stable release of the specification, while the [development branch](/../../tree/development) contains the latest working draft.
 
 For a complete specification of the FDP metadata items, see [spec.md](spec.md).
 
@@ -24,60 +24,43 @@ Table of contents
     - [Current implementation](#current-implementation)
 
 # Introduction 
-`FAIRDataPoint` (FDP) is a data repository that provides metadata and data in a FAIR way. FDP uses a REST API for creating, storing and serving `FAIR metadata`. FDP is a software that, from one side, allows data owners to expose datasets in a FAIR manner and, for another side, allows data users to discover information (metadata) about the offered datasets and, if license conditions allow, the actual data can be accessed.
+`FAIR Data Point` (FDP) is a metadata repository that provides access to metadata in a FAIR way. FDP uses a REST API for creating, storing and serving `FAIR metadata`. FDP is a software that, from one side, allows digital objects owners/publishers to expose the metadata of their digital objects in a FAIR manner and, for another side, allows digital objects' consumers to discover information (metadata) about offered digital objects. Commonly, the FAIR Data Point is used to expose metadata of datasets but metadata of other types of digital objects can also be exposed such as ontologies, repositories, analysis algorithms, websites, etc.
 
-A basic assumption for the FDP is its distributed nature. We believe that big data warehouses spanning multiple domains are not feasible and/or desirable due to issues concerning scalability, separation of concerns, data size, costs, etc. A completely decoupled and distributed infrastructure also does not seem realistic. The scenario we envision has a mixed nature, with a number of reference data repositories, containing a relevant selection of core datasets, e.g., EBI's repositories, integrated with smaller distributed data repositories, e.g., different biobanks, datasets/dababases created within the scope of research projects, etc. Many different data repositories and datasets should interoperate in order to allow increasingly complex questions to be answered. Data interoperability, however, takes place in different levels, such as syntactical and semantical. A collection of FDPs aim to address this interoperability issues by enabling data owners to share their data in FAIR manner and, therefore, fostering findability, accessibility, interoperability and reusability.
+A basic assumption for the FDP is its distributed nature. We believe that big warehouses spanning multiple domains are not feasible and/or desirable due to issues concerning scalability, separation of concerns, data size, costs, etc. A completely decoupled and distributed infrastructure also does not seem realistic. The scenario we envision has a mixed nature, with a number of reference repositories, containing a relevant selection of core digital objects, e.g., EBI's repositories, Zenodo, BioPortal, etc., integrated with smaller distributed repositories, e.g., different biobanks, digital objects' repositories created within the scope of research projects, etc. Many different repositories and their digital objects should interoperate in order to allow increasingly complex questions to be answered. Interoperability, however, takes place in different levels, such as syntactical and semantical. A collection of FDPs aim to address this interoperability issues by enabling digital objects' producers/publishers to share the metadata of their objects in FAIR manner and, therefore, fostering findability, accessibility, interoperability and reusability.
 
-The FDP software is being initially developed as a stand-alone web application. However, the functionality/behaviour of the FDP can be also embedded in other applications to provide FAIR data accessibility to the application’s metadata and data. For instance, an existing data repository may choose to implement FDP's API and metadata content, behaving this way also as a FDP.
+The main goal of the FDP is to establish a common method for metadata provisioning and accessing and, as a consequence, (client) applications have a predictable way of accessing and interacting with metadata content. To fulfill this goal, we created two types of artefacts. A set of specifications to help developers extend the funciontalities of their applications so that they behave also as FAIR Data Points and a reference application for those who would like to have the FDP functionality in a stand-alone web application.
 
 ## Purpose
 
-The purpose of this document is to specify the FAIR Data Point (FDP) software. This document includes requirements, architecture and design of the FDP software. This specification is primarily intended to be a reference for developing the first version of the FDP software by the DTL FAIR engineering team.
-
-## Product Scope
-FDP is a software that, from one side, allows data owners to expose datasets in a FAIR manner and, for another side, allows data users to discover properties about offered datasets (metadata) and, if license conditions allow, the actual data can be accessed.
-
-Although an FDP may be used in any knowledge domain, we are focusing on life sciences and, therefore, for now, the examples are concerned with biological datasets.
-
-A basic assumption for the FDP is its distributed nature. We believe that big data warehouses spanning multiple domains are not feasible and/or desirable due to issues concerning scalability, separation of concerns, data size, costs, etc. A completely decoupled and distributed infrastructure also does not seem realistic. The scenario we envision has a mixed nature, with a number of reference data repositories, containing a relevant selection of core datasets, e.g., EBI's repositories, integrated with smaller distributed data repositories, e.g., different biobanks, datasets/dababases created within the scope of research projects, etc.
-
-Many different data repositories and datasets should interoperate in order to allow increasingly complex questions to be answered. Data interoperability, however, takes place in different levels, such as syntactical and semantical. A collection of FDPs aim to address this interoperability issues by enabling data owners to share their data in FAIR manner and, therefore, fostering findability, accessibility, interoperability and reusability.
-
-The FDP software is being initially developed as a stand-alone web application. However, the functionality/behaviour of the FDP can be also embedded in other applications  to provide FAIR data accessibility to the application’s datasets. For instance, an existing data repository may choose to implement FDP's API and metadata content, behaving this way also as a FDP.
+The purpose of this document is to specify the FAIR Data Point (FDP) software. This document includes requirements, architecture and design of the FDP software. This specification is primarily intended to be a reference for developer willing to add the FDP functionality into their existing applications.
 
 # Overall Description
 
 ## Usage Scenarios
 
-From the different data interoperability projects we are involved, the following usage scenarios have been identified. We used these usage scenarios to derive the requirements for the data storage and accessibility infrastructure and guide the design and development of the solution.
+From the different interoperability projects we have been and are involved, the following usage scenarios have been identified. We used these usage scenarios to derive the requirements for the metadata storage and accessibility infrastructure and guide the design and development of the solution.
 
 ### Data discovery
 
-A researcher needs to find datasets containing data about proteins that are activated in specific tissues and combine these data with information of which genes are involved in the production of such proteins. In another situation, the researcher needs to know which biobanks carry a given type of biosample (e.g., blood samples) from patients possessing a specific phenotype (e.g., Alzheimer's disease) taken from a patient registry whose onset age was lower than 45 year-old. These data users need to use a straightforward search application that allows them to find the required information.
+A researcher needs to find datasets containing data about his/her insterested subject such proteins that are activated in specific tissues, polution level in a given region or infrared observation of a particular galaxy, combine these data and analyse them. In another situation, the researcher needs to know which biobanks carry a given type of biosample (e.g., blood samples) from patients possessing a specific phenotype (e.g., Alzheimer's disease) taken from a patient registry whose onset age was lower than 45 year-old. These data users need to use a straightforward search application that allows them to find the required information.
 
 ### Data access
 
-Once a data user finds where the needed datasets, including the information about their licenses and access protocols, the user wants to access the data, retrieving it. Because in many situations the data user will integrate many different datasets, she/he needs that the formats in which data will be retrieved and the access methods to be standardised. In other words, the method with which the data will be accessed should be common to all datasets and data providers. Also, the data format from the datasets should be using a common representation technology that facilitates data integration.
+Once a data user/consumer finds where the needed datasets, including the information about their licenses and access protocols, the user wants to access the data, retrieving it or send an algorithm to analyse the data. In many situations the data user will integrate many different datasets. To carry out this integrations, the user needs to know in which formats, structure the data can be accessed and which access methods are available. This information comes in the former of metadata. In order to facilitate the usage of metadata, the method with which the metadata will be accessed should be common in all different metadata sources and a common representation technology should be used for the metadata.
 
 ### Data publication
 
-A research group is running a project in which data is being created. As the data will be used during the project for analysis and may also be useful for other users, the group would like to publish them in a way that allows potential users of the data to retrieve information about the datasets (metadata), data search engines to index the datasets' metadata, and users to retrieve the data. Some of the produced datasets have an open license but others have more restrictive licenses. Therefore, the data storage and accessibility infrastructure should be able to enforce the license by imposing conditions for users to access the restricted datasets.
-
-### Data metrics gathering
-
-The owners of the data storage and accessibility infrastructure need to have information about the usage of their infrastructure. Different information should be gathered such as the number of users accessing the metadata and data, who are they, where are they coming from, etc. This information is used to assess the amount of computing resources necessary to cope with the requests, to assess the interest on each of the offered datasets and to understand which types of users are interested in which of the offered datasets. This information may also be used as an evidence of the relevance of the datasets, helping the data owners to justify requests for funding to keep the datasets available. The gathered metrics are to be used primarily by the owner of the FDP. The owner can opt to make the information, or part of it, publicly accessible. However, privacy concerns should be taken into account if identifiable information is gathered.
+A research group is running a project in which data is being created. As the data will be used during the project for analysis and may also be useful for other users, the group would like to publish them in a way that allows potential users of the data to retrieve information about the datasets (metadata), data search engines to index the datasets' metadata, and users to retrieve the data. Some of the produced datasets have an open license but others have more restrictive licenses. All these metadata should be available in terms of metadata so that potential data users would have enough information to asses whether the data described in the metadata fits their needs.
 
 ## Goals
 
-From the usage scenarios, we have identified a need for a data storage and accessibility infrastructure that we call FAIR Data Point (FDP). The FDP has the following goals:
+From the usage scenarios, we have identified a need for a metadata provisioning infrastructure that we call FAIR Data Point (FDP). The FDP has the following goals:
 
-* Allow data owners to expose their datasets in a way that complies with the FAIR Data Principles. 
-* Allow data consumers to discover information about the FAIR Data Point, its offered datasets and the actual data items from each of the datasets.
-* Allow data consumers to access the data. Whenever the license of a dataset imposes further restrictions, the FDP should enforce these restrictions.
-* Allow the data owner to gather access metrics about the offered (meta)data.
+* Allow owners/creators/publishers to expose the metadata of their digital objects in a way that follows the FAIR Data Principles. 
+* Allow consumers/users to discover information about digital objects they are interested on.
 * Allow interaction for both humans (GUI) and software agents (API).
 
-Based on these goals, Figure 1 depicts the general architecture of an FDP. In this architecture, the FDP exposes its functionality to the users through an application programming interface (API) and a graphical user interface (GUI). The former is intended for software clients while the later for human clients. The figure also depicts four internal components, each one responsible for one of the four main behaviours expected from an FDP, namely, (i) provisioning of metadata information, (ii) access to the offered datasets, (iii) metrics gathering of metadata and data access and usage and, (iv) access control when the dataset's license imposes restrictions.
+Based on these goals, Figure 1 depicts the general architecture of an FDP. In this architecture, the FDP exposes its functionality to the users through an application programming interface (API). In our reference implementation, besides the FDP itself we developed a FDP web client, which connects to the FDP API and allows human users to interact with the application through a web-based interface. The figure also depicts the FDP's  internal components, each one responsible for one of the four main behaviours expected from an FDP, namely, (i) provisioning of metadata information, (ii) access to the offered datasets, (iii) metrics gathering of metadata and data access and usage and, (iv) access control when the dataset's license imposes restrictions.
 
 <p align="center"> 
      <img src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_GeneralArchitecture.png">
