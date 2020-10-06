@@ -473,6 +473,7 @@
 					 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . <br/>
 					 @prefix &nbsp;dct: &lt;http://purl.org/dc/terms/&gt; . <br/>
 					 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . <br/>
+					 @prefix &nbsp;ldp: &lt;http://www.w3.org/ns/ldp#&gt; . <br/>
 					 @prefix &nbsp;r3d: &lt;http://www/re3data.org/schema/3-0#&gt; . <br/>
 					 @prefix &nbsp;&nbsp;sh: &lt;http://www.w3.org/ns/shacl#&gt; . <br/>
 					 @prefix &nbsp;xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br/>
@@ -572,6 +573,35 @@
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+					 <br/>
+					 :RepositoryContainerShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass ldp:DirectContainer ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:name "title" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:description "Name identifying the member resources" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:title ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:uniqueLang true ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:name "membership resource" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:description "" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path ldp:membershipResource ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind r3d:Repository ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:name "has member relation" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:description "The predicate used in the metadata to relate the reposiroty with its members." ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path ldp:hasMemberRelation ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind r3d:dataCatalog ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+ 					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:name "contains" ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:description "A set of triples, maintained by the LDP container, that lists documents created by the LDP container." ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path ldp:contains ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind dcat:Catalog ; <br/>
 					 &nbsp;&nbsp;]. <br/>
 				 
 				 </code>
