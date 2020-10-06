@@ -1,0 +1,863 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>FAIR Data Point specifications</title>
+  <link rel="stylesheet" href="style/base.css">
+  <style>
+  .example::before {
+    content: "Example";
+    content: "Example " counter(example);
+  }
+  #example + p + p.example::before {
+    content: "";
+  }
+  .overlarge {
+    margin: 0 !important;
+  }
+  </style>
+ </head>
+ <body class="h-entry">
+	 <div class="head">
+		 <p>
+			 <a class="logo" href="http://fairdatapoint.org/">
+				 <img alt="FDP" height="50" src="images/FAIRDataPoint_logo-small.png" width="100">
+			 </a>
+	   </p>
+		 <h1 id="title">FAIR Data Point</h1>
+		 <h2 id="subtitle">Working Draft, <time class="dt-updated" datetime="2020-04-05">01 October 2020</time></h2>
+		 <div>
+			 <dl>
+				 <dt>This version:</dt>
+				 <dd>
+					 <a class="u-url" href="https://specs.fairdatapoint.org/v1.0">https://specs.fairdatapoint.org/v1.0</a>
+				 </dd>
+				 <dt>Latest version:</dt>
+				 <dd><a href="https://specs.fairdatapoint.org">https://specs.fairdatapoint.org</a></dd>
+				 <dt>Previous Versions:</dt>
+				 <dd><a href="http://www.w3.org/TR/2012/WD-css3-text-20121113/" rel="previous">http://www.w3.org/TR/2012/WD-css3-text-20121113/</a></dd>
+				 <dt>Feedback:</dt>
+				 <dd><span><a href="mailto:l.o.bonino@utwente.nl?subject=%5Bfdof-spec%5D%20YOUR%20TOPIC%20HERE">l.o.boninodasilvasantos@utwente.nl</a></span></dd>
+				 <dt>Test Suite:</dt>
+				 <dd><a href="https://github.com/FAIRDataTeam/FAIRDataPoint/">https://github.com/FAIRDataTeam/FAIRDataPoint/</a></dd>
+				 <dt>Issue Tracking:</dt>
+				 <dd><a href="https://github.com/FAIRDataTeam/FAIRDataPoint/issues">GitHub</a></dd>
+				 <dt class="editor">Editors:</dt>
+				 <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="mailto:l.o.bonino@utwente.nl">Luiz Olavo Bonino</a> (<span class="p-org org">University of Twente, Leiden University Medical Center, GO FAIR International Support and Coordination Office</span>)</dd>
+				 <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="mailto:kees.burger@dtls.nl">Kees Burger</a> (<span class="p-org org">Dutch Techcenter for Life Sciences</span>)</dd>
+				 <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="mailto:r.kaliyaperumal@lumc.nl">Rajaram Kaliyaperumal</a> (<span class="p-org org">Leiden University Medical Center</span>)</dd>
+			 </dl>
+		 </div>
+		 <div></div>
+		 <!--<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2015 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply. </p>-->
+		 <hr title="Separator for header"/>
+	 </div>
+	 <h2 id="abstract">Abstract</h2>
+	 <div>
+		 <p>This document provides specifications for the FAIR Data Point (FDP). The document includes architecture of the core component, metadata structure and schema and API.&nbsp;</p>
+	 </div>
+	 <h2 id="status">Status of this document</h2>
+	 <div>
+		 <p> This is a public copy of the editors’ draft. It is provided for discussion only and may change at any moment. Its publication here does not imply endorsement of its contents by any organization.	Don’t cite this document other than as work in progress. </p>
+		 <p> This document was produced by the FAIR Data Team.</p>
+		 <p></p>
+	 </div>
+	 <nav id="toc">
+		 <h2>Table of Contents</h2>
+		 <ol class="toc" role="directory">
+			 <li><a href="#intro"><span class="secno">1</span>Introduction</a></li>
+				 <ol>
+					 <li><a href="#purpose"><span class="secno">1.1</span>Purpose</a></li>
+					 <li><a href="#conventions"><span class="secno">1.2</span>Document Conventions</a></li>
+				 </ol>
+			 
+			 <li><a href="#overalldescription"><span class="secno">2</span>Overall Description</a></li>			 
+			 <ol>
+				 <li><a href="#usagescenarios"><span class="secno">2.1</span>Usage scenarios</a></li>
+				 <ol>
+					 <li>
+						 <a href="#datadiscovery"><span class="secno">2.1.1</span>Data discovery</a>
+					 </li>
+					 <li>
+						 <a href="#dataaccess"><span class="secno">2.1.2</span>Data access</a>
+					 </li>
+					 <li>
+						 <a href="#datapublication"><span class="secno">2.1.3</span>(Meta)Data publication</a>
+					 </li>
+					 <li>
+						 <a href="#othercontent"><span class="secno">2.1.4</span>Publishing other types of content</a>
+					 </li>
+				 </ol>
+				 <ol>
+					 <li><a href="#goals"><span class="secno">2.2</span>Goals</a></li>
+				 </ol>
+				 <ol>
+					 <li><a href="#productperspective"><span class="secno">2.2</span>Product Perspective</a></li>
+				 </ol>
+			 </ol>
+			 
+			 <li><a href="#intro"><span class="secno">3</span>Architecture</a></li>
+			 
+			 <li><a href="#intro"><span class="secno">4</span>Metadata</a></li>
+			 <ol>
+				 <li><a href="#navigationinformation"><span class="secno">4.1</span>Navigation information</a></li>
+				 <li><a href="#metadataschemas"><span class="secno">4.2</span>Metadata schemas</a></li>
+				 <ol>
+					 <li>
+						 <a href="#repositorymetadata"><span class="secno">4.2.1</span>Repository metadata</a>
+					 </li>
+					 <li>
+						 <a href="#catalogmetadata"><span class="secno">4.2.2</span>Catalog metadata</a>
+					 </li>
+				 </ol>
+				 <ol>
+					 <li><a href="#resourceextensions"><span class="secno">4.3</span>Resource extensions</a></li>
+				 </ol>
+			 </ol>
+			 
+			 <li><a href="#intro"><span class="secno">5</span>Application Programming Interface (API)</a></li>
+
+			 <li><a href="#references"><span class="secno">A</span>References</a></li>
+			 <ol>
+				 <li><a href="#normative"><span class="secno">A.1</span>Normative References</a></li>
+				 <li><a href="#informative"><span class="secno">A.2</span>Informative References</a></li>
+			 </ol>
+		 </ol>
+		 </nav>
+	 <main>
+		 <h2 id="intro"><span class="secno">1 </span> Introduction</h2>
+		 
+		 <p>FAIR Data Point (FDP) is a metadata repository that provides access to metadata following the FAIR principles <a href="#biblio-fairprinciples">[FAIR-principles]</a>. FDP uses a REST API for creating, storing and serving FAIR metadata. FDP is a software that, from one side, allows digital objects owners/publishers to expose the metadata of their digital objects in a FAIR manner and, for another side, allows digital objects' consumers to discover information (metadata) about offered digital objects. Commonly, the FAIR Data Point is used to expose metadata of datasets but metadata of other types of digital objects can also be exposed such as ontologies, repositories, analysis algorithms, websites, etc.</p>
+		 
+		 <p>Many different repositories and their digital objects should interoperate in order to allow increasingly complex questions to be answered. These repositories and their content should be interoperable in order for client applications to autonomously (re)use them. However, interoperability happens at different level, including syntactical and semantical interoperabilities. The FDP aims at addressing these interoperability issues by providing:</p>
+		 <ul>
+			 <li>A common interface to access information (metadata) about digital objects;</li>
+			 <li>A common representation format (<a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>) to express the metadata in a machine-actionable manner;</li>
+			 <li>A common approach to inform to clients how to navigate through the FDP's metadata structure;</li>
+			 <li>A common representation format (<a href="https://www.w3.org/TR/shacl/">SHACL</a>) to represent each metadata record's schema.</li>
+		 </ul>
+		 <p>The main goal of the FDP is to establish a common method for metadata provisioning and accessing and, as a consequence, provide to client applications a predictable way of accessing and interacting with metadata content. To fulfill this goal, this document contains a set of specifications to help developers to extend the functionality of their applications so these applications can also behave as a FAIR Data Point.</p>
+		 
+		 <h3 id="purpose"><span class="secno">1.1 </span>Purpose</h3>
+		 <p>The purpose of this document is to specify the FAIR Data Point. This document includes requirements, architecture and design of the FDP as well as the metadata schemas used. This specification is primarily intended to be a reference for developers willing to add the FDP functionality into their existing applications.</p>
+		 
+		 <h3 id="conventions"><span class="secno">1.2 </span>Document conventions</h3>
+		 <p>Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology. The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT",  "RECOMMENDED", "MAY", and "OPTIONAL" in the normative parts of this document are to be interpreted as described in RFC 2119. However, for readability, these words do not appear in all uppercase letters in this specification. </p>
+		 <p>All of the text of this specification is normative except sections explicitly marked as non-normative, examples, and notes. <a href="#biblio-rfc2119">[RFC2119]</a></p>
+		 <p>Examples in this specification are introduced with the words "for example" or are set apart from the normative text with <code>class="example"</code>, like this: </p>
+		 
+		 <div class="example" id="example-f839f6c8">
+			 <p>This is an example of an informative example.</p>
+		 </div>
+		 
+		 <p>Informative notes begin with the word "Note" and are set apart from the normative text with <code>class="note"</code>, like this: </p>
+		 <p role="note">Note, this is an informative note.</p>
+		 
+		 <p>Advisements are normative sections styled to evoke special attention and are set apart from other normative text with <code>&lt;p class="advisement"&gt;</code> or <code>&lt;strong class="advisement"&gt; </code>, like this: <strong class="advisement"> UAs MUST provide an accessible alternative. </strong> </p>
+		 
+		 <p>Data tables are formatted with horizontal and vertical rules and text-alignment based on their markup (using <code>class="data"</code>). This requires appropriate use of <code>&lt;thead&gt;</code> for the table header, <code>&lt;th&gt;</code> for header cells, <code>&lt;tbody&gt;</code> for row groups, <code>&lt;th scope=row&gt;</code> for row header cells, and <code>&lt;colgroup&gt;</code> for column groups.</p>
+		 
+		 <h2 id="overalldescription"><span class="secno">2</span> Overall Description</h2>
+		 
+		 <p>The basis for any infrastructure is its suitability to the issues it should address. Therefore, the first step is to identify these issues. One common approach for this identification is to investigate current practices that could benefit from a supporting infrastructure. Once we analyse these practices, we can elicit the requirements for the infrastructure. In this document we list a number of data usage scenarios that represent regular practices in data-intensive domains. These usage scenarios have been gathered through interactions with a variety of representative stakeholders in different domains. These stakeholders represent data producers, data consumers and providers of both infrastructure and services for supporting data activities.</p>
+		 
+		 <h3 id="usagescenarios"><span class="secno">2.1 </span>Usage Scenarios</h3>
+		 
+		 <p>From the different semantic interoperability projects we have been and are involved, the following usage scenarios have been identified. These usage scenarios do not represent one particular situation in a real project but depict data interoperability-related situations that we experienced in a number of different projects. From these scenarios we derived a set of requirements for metadata storage and accessibility infrastructure and they also guided the design and development of the solution.</p>
+		 
+		 <h4 id="datadiscovery"><span class="secno">2.1.1</span> Data discovery</h4>
+		 
+		 <p>A researcher needs to find datasets containing data about a given subject, e.g., proteins that are activated in specific tissues, polution level in a given region or infrared observation of a particular galaxy; integrated the discovered data with other pre-selected datasets and analyse them. In another situation, the researcher needs to know which biobanks carry a given type of biosample (e.g., blood samples) from patients possessing a specific phenotype (e.g., Alzheimer's disease) taken from a patient registry whose onset age was lower than 45 year-old. These data users need to use a straightforward search application that allows them to find the required information. However, the search application first needs to have indexed information about existing datasets wherever their location.</p>
+		 
+		 <h4 id="dataaccess"><span class="secno">2.1.2</span> Data access</h4>
+		 
+		 <p>Once a data user/consumer finds where the needed datasets, including the information about their licenses and access protocols, the user wants to access the data, retrieving it or send an algorithm to analyse the data. In many situations the data user will integrate many different datasets. To carry out this integrations, the user needs to know in which formats, structure the data can be accessed and which access methods are available. This information comes in the former of metadata. In order to facilitate the usage of metadata, the method with which the metadata will be accessed should be common in all different metadata sources and a common representation technology should be used for the metadata. ,</p>
+		 
+		 <h4 id="datapublication"><span class="secno">2.1.3</span> (Meta)Data publication</h4>
+		 
+		 <p>An organization is running a project in which data is being created. As the data will be used during the project for analysis and may also be useful for other users, the group would like to publish them in a way that allows potential users of the data to retrieve information about the datasets (metadata), data search engines to index the datasets' metadata, and users to has access to the data. Some of the produced datasets have an open license but others have more restrictive licenses. All these metadata should be available so that potential data users would have enough information to asses whether the data described in the metadata fits their needs.</p>
+		 
+		 <h4 id="othercontent"><span class="secno">2.1.4</span> Publishing other types of content</h4>
+		 
+		 <p>An organization is running a project in which different types of deliverables will be created. One group is developing a piece of software, other group is working on a controlled vocabulaire while the third group will generate a number of reference documents. The organization would like to publish information about these materials so others could discover and reuse them.</p>
+		 
+		 <h2 id="architecture"><span class="secno">3</span> Architecture</h2>
+		 
+		 <p>From the usage scenarios, we have identified a need for a metadata provisioning infrastructure that we call FAIR Data Point (FDP). The FDP has the following goals:</p>
+		 
+		 <ul>
+			 <li>Allow owners/creators/publishers to expose the metadata of their digital objects in a way that follows the FAIR Data Principles.</li>
+			 <li>Allow consumers/users to discover information about digital objects they are interested on.</li>
+			 <li>Provide meaninful information about digital objects for both humans and software agents.</li>
+		 </ul>
+		 
+		 <p>Based on these goals, Figure 1 depicts the general architecture of an FDP. In this architecture, the FDP exposes its functionality to the users through an application programming interface (API). In our reference implementation, besides the FDP itself we developed a FDP web client, which connects to the FDP API and allows human users to interact with the application through a web-based interface.</p>
+
+		 <figure>
+			 <p><img src="images/FDParchitecture.png" alt="FDP Architecture"></p>
+			 <figcaption><span class="marker">Figure 3.1</span> High-level architecture of the FAIR Data Point.</figcaption>
+		 </figure>
+
+		 <p>Figure 1 also depicts the FDP's internal components, namely the Metadata Provider, Access Control, Metadata Schemas and the RDF Metadata Store.</p>
+		 
+		 <ul>
+			 <li><strong>Metadata Provider</strong> - responsible for the provisioning of the metadata content available in the FDP;</li>
+			 <li><strong>Access Control</strong> - reponsible for controlling the access to the metadata content. In general, metadata can be openly accessible for reading but is expected that only a selected number of people have access to add, delete or edit the metadata content. Moreover, in some situations, metadata or part of the metadata may also have access restrictions for reading. The Access Control component makes sure that these restrictions are enforced;</li>
+			 <li><strong>RDF Metadata Source</strong> - The FDP <em class="rfc2119">MUST</em> present its metadata content <code>RDF</code> and, more specifically, in, at least, <code>turtle</code> and <code>JSON-LD</code> syntaxes. Therefore, these metadata should be stored in a RDF Metadata Source. The FDP reference implementation support native in-memory or in-disk storage as well as the connection with existing triple stores such as GraphDB, Allegro Graph, Blazegraph, etc. If one is extending an existing application based on this FDP specification, the RDF metadata can be provided using different implementation strategies. For instance, metadata stored in other representation formats can be dynamically converted to RDF through a conversion compoenent that serves as the RDF Metadata Source.</li>
+			 <li><strong>Metadata Schemas</strong> - the FDP exposes metadata about different types of digital objects, e.g., repositories, content catalogs and datasets, among others. These metadata should comply with schemas defined by their related communities. In the FDP, the metadata schemas <em class="rfc2119">MUST</em> be represented in <code>SHACL</code>. The FDP reference implementation is shipped with four basics metadata schemas for the the FDP itself as a (metadata) repository, for catalogs, for datasets and for datasets' distributions. These schemas allow the FDP to check and validate metadata content that is added. Addition of metadata schemas for other types of digital objects or extension to the base schemas are supported by the FDP reference implementation;</li>
+			 <li><strong>Navigation information</strong> -</li>
+		 </ul>
+		 
+		 <h2 id="metadata"><span class="secno">4</span> Metadata</h2>
+		 
+		 <p>The FAIR principles give special attention to metadata. In fact, all principles relate to metadata in at least one aspect. Metadata can be defined as data that provides information about other data. Here we extend this notion to define metadata as information about other digital objects. This information includes descriptions about the origin, structure, provenance, rights and obligations or other characteristics of digital objects. The FAIR Data Point's metadata approach follows this idea of supporting the creation of metadata about different types of digital objects. The first object to provide metadata about is the FDP itself. When a client interacts with a service, it should know what it is dealing with. Therefore, the FDP provides metadata about itself and, from that point on, the client can navigate its metadata content to discover the other metadata records.</p>
+		 
+		 <p>The FDP uses the W3C's Data Catalog Vocabulaire (DCAT) version 2 <a href="#biblio-dcat">[DCAT]</a> model as the basis for its metadata content. Figure 4.1 depicts the FDP extensions to the DCAT model.</p>
+		 
+		 <figure>
+			 <p><img src="images/FDPmetadatadiagram.png" alt="FDP metadata structure"></p>
+			 <figcaption><span class="marker">Figure 4.1</span> FDP extensions to the DCAT model</figcaption>
+		 </figure>
+		 
+		 <p>In DCAT, <code>Resource</code> represents entities that can be described by a metadata record. Since it has been defined as an abstract class, it it not intended to be used directly. We should used one of its subclasses, such as <code>Dataset</code> or <code>Data Service</code> instead. <code>Dataset</code> represents a collection of data while <code>Data Service</code> represents services accessible through an interface (API) that serve datasets. <code>Catalog</code> a subclass of <code>Dataset</code> represents aggregations of metadata records about digital objects. For instance, a <code>Catalog</code> may contain references to the metadata records of <code>Datasets</code>.</p>
+		 
+		 <p>The FDP extendes the DCAT model by adding the concept of <code>Repository</code> as a kind of data service that serves metadata records as an specific type of data. We adopt the concept of Repository from the RE3Data schema. RE3Data and DCAT overlap in many properties. Because of this, in Figure 4.1 the <code>Repository</code> class only depicts the properties that are not already inherited from <code>Data Service</code> and <code>Resource</code>.</p>
+		 
+		 <p class="advisement">An implementation of the FDP specifications <em class="rfc2119">MUST</em> minimally provide the metadata records of the <code>Repository</code> and of at least one <code>Catalog</code>.</p>
+		 
+		 <h3 id="navigationinformation"><span class="secno">4.1</span> Navigation information</h3>
+		 
+		 <p>Since the FDP supports the provisioning of metadata about different types of digital objects and the relations among these metadata records can be customized, each FDP installation may have a different structure. For instance, the FDP reference implementation is pre-loaded with the structure of metadata about Repository → Catalog → Dataset → Distribution. Another FDP could have a different metadata structure: Repository → Catalog → Semantic Artefact. With this flexibility, a client application would not know how to navigate the FDP metadata content unless it follows all URIs in the metadata, which may be extensive. Therefore, the FDP MUST describe its own navigation structure. This navigtaion information MUST be provided by using the Linked Data Platform (LDP) containment predicates ldp:contains or ldp:hasMemberRelation. This information MUST be present in every metadata record that leads to other metadata records.</p>
+		 
+		 <p>The following RDF turtle code shows an example of Repository metadata record with navigation information.</p>
+		 
+		 <div class="example" id="example-repositorywithldp">
+			 <p>
+				 <code>@prefix f: &lt;https://purl.org/fairdatapoint/&gt; .</code><br/>
+				 <code>@prefix dct: &lt;http://purl.org/dc/terms/&gt; .</code><br/>
+				 <code>@prefix fdp: &lt;http://purl.org/fdp/fdp-o#&gt; .</code><br/>
+				 <code>@prefix ldp: &lt;http://www.w3.org/ns/ldp#&gt; .</code><br/>
+				 <code>@prefix r3d: &lt;http://www.re3data.org/schema/3-0#&gt; .</code><br/><br/>
+				 <code>f:app a r3d:Repository</code><br/>
+				 <code>&nbsp;&nbsp;dct:title "Demonstration FAIR Data Point";</code><br/>
+				 <code>&nbsp;&nbsp;dct:conformsTo &lt;https://www.purl.org/fairtools/fdp/schema/0.1/fdpMetadata&gt;;</code><br/>
+				 <code>&nbsp;&nbsp;dct:description "This FAIR Data Point deployment is used for demonstration of the application and to allow the navigation through its metadata content. The metadata presented here is also for demonstration purposes only and not necessarily describe properly their related resources.";</code><br/>
+				 <code>&nbsp;&nbsp;dct:hasVersion "1.0" ;</code><br/>
+				 <code>&nbsp;&nbsp;dct:license &lt;http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd4.0&gt;;</code><br/>
+				 <code>&nbsp;&nbsp;dct:publisher f:app#publisher ;</code><br/>
+				 <code>&nbsp;&nbsp;r3d:repositoryIdentifier f:app#identifier ;</code><br/>
+				 <code>&nbsp;&nbsp;fdp-o:metadataIdentifier f:app#identifier ;</code><br/>
+				 <code>&nbsp;&nbsp;fdp-o:metadataIssued "2020-05-29T09:55:08.580Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt;;</code><br/>
+				 <code>&nbsp;&nbsp;fdp-o:metadataModified "2020-09-30T11:17:43.008Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt;;</code><br/>
+				 <code>&nbsp;&nbsp;r3d:dataCatalog </code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/3dde263d-0a7c-4f2a-9813-ccb3a51f70a8 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/508d3c96-8106-49d2-910c-13706aca75e3 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/6e43c568-c6fa-41c8-a88a-7ee4c85035af ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a46aa445-3be0-4db8-8968-3338d1061a47 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a91d3db7-fe83-4de1-b678-fe1b0c82f2f1 .</code><br/>
+				 <br/>
+				 <code>f:app/catalog/ a ldp:DirectContainer ;</code><br/>
+				 <code>&nbsp;&nbsp;dct:title "Catalogs" ;</code><br/>
+				 <code>&nbsp;&nbsp;ldp:membershipResource f:app ;</code><br/>
+				 <code>&nbsp;&nbsp;ldp:hasMemberRelation r3d:dataCatalog ;</code><br/>
+				 <code>&nbsp;&nbsp;ldp:contains</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/3dde263d-0a7c-4f2a-9813-ccb3a51f70a8 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/508d3c96-8106-49d2-910c-13706aca75e3 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/6e43c568-c6fa-41c8-a88a-7ee4c85035af ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a46aa445-3be0-4db8-8968-3338d1061a47 ,</code><br/>
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a91d3db7-fe83-4de1-b678-fe1b0c82f2f1 ;</code><br/>				        
+			 </p>
+		 </div>
+		 <p>In the metadata record, the repository (<code>f:app</code>) has the relation <code>r3d:dataCatalog</code> with the its catalogs. This is the parent-child relation that should be followed by a client that wants to navigate the FDP metadata structure. To explicitly inform the navigation structure, we have the code segment at the bottom of this example metadata record informing that we have a container identified as <code>f:app/catalog/</code> is the container for the <code>f:app</code> (the object of the <code>ldp:membershipResource</code>) and it relates to its contained members using the relation <code>r3d:dataCatalog</code>.</p>
+		 
+		 <h3 id="metadataschemas"><span class="secno">4.2</span> Metadata schemas</h3>
+		 
+		 <h4 id="repositorymetadata"><span class="secno">4.2.1</span> Repository metadata</h4>
+		 <table class="propdef def">
+			 <caption>Repository metadata schema</caption>
+			 <thead>
+				 <tr>
+					 <th>Ontology</th>
+					 <th>Property name</th>
+					 <th>Datatype</th>
+					 <th>Cardinality</th>
+					 <th>Description</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 <tr>
+					 <td>RDF</td>
+					 <td>rdf:type</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The type of the object described by the metadata record which, in this case, is a repository. The value shoud be or type <code>r3d:Repository</code> or <code>fdp:FairDataPoint</code>.</td>
+				 </tr>
+				 <tr>
+					 <td>DC terms</td>
+					 <td>dct:title</td>
+					 <td>String</td>
+					 <td>1..*</td>
+					 <td>Name of the repository with the language tag.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:hasVersion</td>
+					 <td>String</td>
+					 <td>0..1</td>
+					 <td>Version of the repository software.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:description</td>
+					 <td>String</td>
+					 <td>0..*</td>
+					 <td>Description of the repository with the language tag. Equivalent to <code>r3d:description</code>.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:publisher</td>
+					 <td><code>foaf:Agent</code></td>
+					 <td>1..*</td>
+					 <td>The entity(ies) (person or organization) responsible for the repository. Equivalent to <code>r3d:institution</code>.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:language</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td>The language(s) used in the repository. Equivalent to <code>r3d:repositoryLanguage</code>.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:license</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The reference to the usage license of the repository.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:conformsTo</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The specification of the repository metadata schema (in <code>SHACL</code>).</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:rights</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td></td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:accessRights</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td></td>
+				 </tr>
+				 <tr>
+					 <td>DCAT</td>
+					 <td>dcat:contactPoint</td>
+					 <td><code>vCard</code></td>
+					 <td>0..*</td>
+					 <td>Relevant contact information for the repository.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dcat:keyword</td>
+					 <td>String</td>
+					 <td>0..*</td>
+					 <td>Keyword(s) describing the repository.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dcat:theme</td>
+					 <td><code>skos:subject</code></td>
+					 <td>0..*</td>
+					 <td>Main category(ies) of the repository.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dcat:endPointURL</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The URL of the repository. Equivalent to <code>r3d:repositoryURL</code>.</td>
+				 </tr>
+				 <tr>
+					 <td>RE3data</td>
+					 <td>r3d:repositoryURL</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The URL of the repository. Equivalent to <code>dcat:endPointURL</code>.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>r3d:startDate</td>
+					 <td>xsd:date</td>
+					 <td>0..1</td>
+					 <td>Date when the repository started its operations.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>r3d:endDate</td>
+					 <td>xsd:date</td>
+					 <td>0..1</td>
+					 <td>Date when the repository ended its operations.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>r3d:repositoryLanguage</td>
+					 <td>IRI</td>
+					 <td>0..1</td>
+					 <td>The user interface language(s) of the repository. Equivalent to <code>dct:language</code>.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>r3d:institution</td>
+					 <td><code>foaf:Agent</code></td>
+					 <td>1..*</td>
+					 <td><code>foaf:Agent</code> object(s) representing the institution(s) responsible for the repository. Equivalent to <code>dct:publisher</code>.</td>
+				 </tr>
+				 <tr>
+					 <td>FDP ontology</td>
+					 <td>fdp:metadataIdentifier</td>
+					 <td><code>IRI</code></td>
+					 <td>1</td>
+					 <td>Identifier of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataIssued</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Creation data of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataModified</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Last modified data of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td>LDP</td>
+					 <td>ldp:DirectContainer</td>
+					 <td><code>IRI</code></td>
+					 <td>1</td>
+					 <td>Identifier of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataIssued</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Creation data of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataModified</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Last modified data of the metadata entry.</td>
+				 </tr>
+			 </tbody>
+		 </table>
+		 
+		 <p>Below we have repository metadata schema defined in <code>SHACL</code>.</p>
+		 
+		 <div class="advisement" id="repository-shacl">
+			 <p>
+				 <code>
+					 @prefix &nbsp;&nbsp;&nbsp;&nbsp;: &lt;http://fairdatapoint.org/&gt; . <br/>
+					 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . <br/>
+					 @prefix &nbsp;dct: &lt;http://purl.org/dc/terms/&gt; . <br/>
+					 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . <br/>
+					 @prefix &nbsp;r3d: &lt;http://www/re3data.org/schema/3-0#&gt; . <br/>
+					 @prefix &nbsp;&nbsp;sh: &lt;http://www.w3.org/ns/shacl#&gt; . <br/>
+					 @prefix &nbsp;xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br/>
+					 <br/>
+					 :RepositoryShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass r3d:Repository ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:title ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:hasVersion ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:description ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:description ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:publisher ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:node :AgentShape ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:institution ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:language ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:repositoryLanguage ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:license ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:conformsTo ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+ 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:rights ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:accessRights ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:contactPoint ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:node sh:ContactPointShape ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:keyword ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:theme ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:endPointURL ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:repositoryURL ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path r3d:startDate ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:date ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path r3d:endDate ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:date ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIdentifier ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIssued ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:dateTime ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIdentifier ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:dateTime ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+					 <br/>
+					 :AgentShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass foaf:Agent ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path foaf:name ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+					 <br/>
+					 :ContactPointShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass vcard:Kind ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path vcard:hasEmail ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+				 
+				 </code>
+			 </p>
+		 </div>
+		 
+		 <h4 id="catalogmetadata"><span class="secno">4.1.2</span> Catalog metadata</h4>
+		 <table class="propdef def">
+			 <caption>Catalog metadata schema</caption>
+			 <thead>
+				 <tr>
+					 <th>Ontology</th>
+					 <th>Property name</th>
+					 <th>Datatype</th>
+					 <th>Cardinality</th>
+					 <th>Description</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 <tr>
+					 <td>RDF</td>
+					 <td>rdf:type</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The type of the object described by the metadata record which, in this case, is a catalog. The value shoud be or type <code>dcat:Catalog</code>.</td>
+				 </tr>
+				 <tr>
+					 <td>DC terms</td>
+					 <td>dct:title</td>
+					 <td>String</td>
+					 <td>1..*</td>
+					 <td>Name of the catalog with the language tag.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:hasVersion</td>
+					 <td>String</td>
+					 <td>0..1</td>
+					 <td>Version of the catalog.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:description</td>
+					 <td>String</td>
+					 <td>0..*</td>
+					 <td>Description of the catalog with the language tag.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:publisher</td>
+					 <td><code>foaf:Agent</code></td>
+					 <td>1..*</td>
+					 <td>The entity(ies) (person or organization) responsible for the catalog.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:language</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td>The language(s) used in the catalog.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:license</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The reference to the usage license of the catalog.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:issued</td>
+					 <td>DateTime</td>
+					 <td>0..1</td>
+					 <td>The date when the catalog metadata record has been created.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:modified</td>
+					 <td>DateTime</td>
+					 <td>0..1</td>
+					 <td>The last modified data of the catalog metadata record.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:conformsTo</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>The specification of the catalog metadata schema (in <code>SHACL</code>).</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:rights</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td></td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:accessRights</td>
+					 <td>IRI</td>
+					 <td>0..*</td>
+					 <td></td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:hasPart</td>
+					 <td>IRI</td>
+					 <td>1..*</td>
+					 <td>The relation between the catalog and its items. This is the most general predicate for membership of a catalog. It is recommended to use more specific sub-properties such as <code>dcat:dataset</code>, <code>dcat:catalog</code>, <code>dcat:service</code>, or a custom sub-property.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>dct:isPartOf</td>
+					 <td>IRI</td>
+					 <td>1</td>
+					 <td>Relation to the parent metadata. In this case the repository metadata.</td>
+				 </tr>
+				 <tr>
+					 <td>DCAT</td>
+					 <td>dcat:themeTaxonomy</td>
+					 <td><code>IRI</code></td>
+					 <td>1</td>
+					 <td>A knowledge organization system (KOS) used to classify the cataloged resources that are part of this catalog. It is recommended that the taxonomy is organized in a <code>skos:ConceptScheme</code>, <code>skos:Collection</code>, <code>owl:Ontology</code> or similar.</td>
+				 </tr>
+				 <tr>
+					 <td>FDP ontology</td>
+					 <td>fdp:metadataIdentifier</td>
+					 <td><code>IRI</code></td>
+					 <td>1</td>
+					 <td>Identifier of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataIssued</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Creation data of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td></td>
+					 <td>fdp:metadataModified</td>
+					 <td><code>xsd:dateTime</code></td>
+					 <td>1</td>
+					 <td>Last modified data of the metadata entry.</td>
+				 </tr>
+				 <tr>
+					 <td>FOAF</td>
+					 <td>foaf:homepage</td>
+					 <td>IRI</td>
+					 <td>0..1</td>
+					 <td>The URL of the catalog HTML version.</td>
+				 </tr>
+			 </tbody>
+		 </table>
+		 
+		 <p>Below we have catalog metadata schema defined in <code>SHACL</code>.</p>
+		 
+		 <div class="advisement" id="catalog-shacl">
+			 <p>
+				 <code>
+					 @prefix &nbsp;&nbsp;&nbsp;&nbsp;: &lt;http://fairdatapoint.org/&gt; . <br/>
+					 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . <br/>
+					 @prefix &nbsp;dct: &lt;http://purl.org/dc/terms/&gt; . <br/>
+					 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . <br/>
+					 @prefix &nbsp;r3d: &lt;http://www/re3data.org/schema/3-0#&gt; . <br/>
+					 @prefix &nbsp;&nbsp;sh: &lt;http://www.w3.org/ns/shacl#&gt; . <br/>
+					 @prefix &nbsp;xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br/>
+					 <br/>
+					 :CatalogShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass dcat:Catalog ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:title ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:hasVersion ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:description ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:description ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:publisher ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:node :AgentShape ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:institution ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:language ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:repositoryLanguage ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:license ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:conformsTo ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+ 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:rights ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:accessRights ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dct:hasPart ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:node sh:ContactPointShape ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:keyword ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:theme ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path dcat:endPointURL ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:equals r3d:repositoryURL ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path r3d:startDate ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:date ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path r3d:endDate ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:date ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIdentifier ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:IRI ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIssued ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:dateTime ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;], [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path fdp:metadataIdentifier ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:datatype xsd:dateTime ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+					 <br/>
+					 :AgentShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass foaf:Agent ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path foaf:name ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+					 <br/>
+					 :ContactPointShape a sh:NodeShape ; <br/>
+					 &nbsp;&nbsp;sh:targetClass vcard:Kind ; <br/>
+					 &nbsp;&nbsp;sh:property [ <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path vcard:hasEmail ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind sh:Literal ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:maxCount 1 ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:minCount 1 ; <br/>
+					 &nbsp;&nbsp;]. <br/>
+				 
+				 </code>
+			 </p>
+		 </div>
+		 
+		 <h2 class="no-num heading settled" id="references">References</h2>
+		 <h3 class="no-num heading settled" id="normative">Normative References</h3>
+		 
+		 <dl>
+			 <dt id="biblio-dcat">[DCAT]</dt>
+			 <dd>Riccardo Albertone; et al. <a href="https://www.w3.org/TR/vocab-dcat-2/">Data Catalog Vocabulary (DCAT) - Version 2</a>. 4 February 2020. REC. URL: <a href="https://www.w3.org/TR/vocab-dcat-2/">https://www.w3.org/TR/vocab-dcat-2/</a></dd>
+			 <dt id="biblio-rfc2119">[RFC2119]</dt>
+			 <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd>
+		 </dl>
+		 <h3 class="no-num heading settled" id="informative">Informative References</h3>
+		 <dl>
+			 <dt id="biblio-fairprinciples">[FAIR-principles]</dt>
+			 <dd>Mark D. Wilkinson; et al. <a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles for scientific data management and stewardship</a>. Scientific Data, 15 March 2016. DOI: <a href="https://doi.org/10.1038/sdata.2016.18">doi:10.1038/sdata.2016.18</a></dd>
+			 
+		 </dl>
+		 
+		 <script src="/scripts/fixup.js"></script>
+	 </main>
+	</body>
+</html>
