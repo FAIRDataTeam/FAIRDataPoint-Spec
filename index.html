@@ -257,7 +257,7 @@
 				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a46aa445-3be0-4db8-8968-3338d1061a47 ,</code><br/>
 				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a91d3db7-fe83-4de1-b678-fe1b0c82f2f1 .</code><br/>
 				 <br/>
-				 <code>f:app/catalog/ a ldp:DirectContainer ;</code><br/>
+				 <code>&gt;https://purl.org/fairdatapoint/&lt; a ldp:DirectContainer ;</code><br/>
 				 <code>&nbsp;&nbsp;dct:title "Catalogs" ;</code><br/>
 				 <code>&nbsp;&nbsp;ldp:membershipResource f:app ;</code><br/>
 				 <code>&nbsp;&nbsp;ldp:hasMemberRelation r3d:dataCatalog ;</code><br/>
@@ -266,7 +266,7 @@
 				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/508d3c96-8106-49d2-910c-13706aca75e3 ,</code><br/>
 				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/6e43c568-c6fa-41c8-a88a-7ee4c85035af ,</code><br/>
 				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a46aa445-3be0-4db8-8968-3338d1061a47 ,</code><br/>
-				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a91d3db7-fe83-4de1-b678-fe1b0c82f2f1 ;</code><br/>				        
+				 <code>&nbsp;&nbsp;&nbsp;&nbsp;f:app/catalog/a91d3db7-fe83-4de1-b678-fe1b0c82f2f1 .</code><br/>				        
 			 </p>
 		 </div>
 		 <p>In the metadata record, the repository (<code>f:app</code>) has the relation <code>r3d:dataCatalog</code> with the its catalogs. This is the parent-child relation that should be followed by a client that wants to navigate the FDP metadata structure. To explicitly inform the navigation structure, we have the code segment at the bottom of this example metadata record informing that we have a container identified as <code>f:app/catalog/</code> is the container for the <code>f:app</code> (the object of the <code>ldp:membershipResource</code>) and it relates to its contained members using the relation <code>r3d:dataCatalog</code>.</p>
@@ -601,7 +601,7 @@
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:name "contains" ; <br/>
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:description "A set of triples, maintained by the LDP container, that lists documents created by the LDP container." ; <br/>
 					 &nbsp;&nbsp;&nbsp;&nbsp;sh:path ldp:contains ; <br/>
-					 &nbsp;&nbsp;&nbsp;&nbsp;sh:nodeKind dcat:Catalog ; <br/>
+					 &nbsp;&nbsp;&nbsp;&nbsp;sh:node :CatalogShape ; <br/>
 					 &nbsp;&nbsp;]. <br/>
 				 
 				 </code>
