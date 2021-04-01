@@ -70,22 +70,23 @@ Figure 1 also depicts the FDP's  internal components, namely the Metadata Provid
 - RDF Metadata Source - The FDP handles metadata in RDF. Therefore, these metadata should be stored in a RDF Metadata Source. The FDP reference implementation support native in-memory or in-disk storage as well as the connection with existing triple stores such as GraphDB, Allegro Graph, Blazegraph, etc. If one is extending an existing application based on this FDP specification, the RDF metadata can be provided using different implementation strategies. For instance, metadata stored in other representation formats can be dynamically converted to RDF through a conversion compoenent that serves as the RDF Metadata Source.
 
 <p align="center"> 
-     <img src="https://github.com/FAIRDataTeam/FAIRDataPoint-Spec/blob/master/images/FDP%20architecture.png">
+     <img src="images/FDP%20architecture.png">
 </p> 
 <p align="center"> Fig. 1 - FDP General architecture based on the application's goals</p>
 
 ## Product Perspective
 
-The FDP has initially two usage purposes: _(i)_ to be used as a stand-alone web application, where data owners give access to their datasets in a FAIR manner and, _(ii)_ to be integrated in larger data interoperability systems, such as the FAIRport, providing the dataset accessibility functionality for such systems. Figure 2 depicts an FDP as a stand-alone application deployed in a web server, exposing to the Web its API and GUI. In the figure we have a FDP Web Client from the FDP's reference implementation and other 3rd party client applications interacting with the FDP's API. Figure 3 depicts a set of FDPs integrated as components in a Data FAIRport platform. In this case, each FDP gives access to the datasets published by a given data owner. Figure 4 depicts FDP's components being integrated into existing data repository solutions extending their features to include the provisioning of metadata and data in a FAIR way.
+The FDP has initially two usage purposes: _(i)_ to be used as a stand-alone web application, where data owners give access to their datasets in a FAIR manner and, _(ii)_ to be integrated in larger data interoperability systems, such as the FAIRport, providing the dataset accessibility functionality for such systems. Figure 2 depicts an FDP as a stand-alone application deployed in a web server, exposing to the Web its API and GUI. In the figure we have a FDP Web Client from the FDP's reference implementation and other 3rd party client applications interacting with the FDP's API. Figure 3 depicts an application with its own specific functionality, storage facility and API being extended to also behave as a FDP to allow it to expose metadata of itself and its content in a FAIR way.
+
 <p align="center"> 
     <img src="images/FDP_standalone.png" height="500">
 </p>
 <p align="center"> Fig. 2 - FDP as a stand-alone Web application </p>
 
 <p align="center"> 
-    <img align="center" src="https://github.com/FAIRDataTeam/FAIRDataPoint/blob/wiki/FDP_appcomponent.jpeg"   height="250">
+    <img align="center" src="images/FDP_appextension.jpeg"   height="350">
 </p>
-<p align="center"> Fig. 3 - FDP as an application component </p>
+<p align="center"> Fig. 3 - FDP as an application extension </p>
 
 # Architecture
 
