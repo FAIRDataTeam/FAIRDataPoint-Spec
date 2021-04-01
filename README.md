@@ -84,7 +84,7 @@ The FDP has initially two usage purposes: _(i)_ to be used as a stand-alone web 
 <p align="center"> Fig. 2 - FDP as a stand-alone Web application </p>
 
 <p align="center"> 
-    <img align="center" src="images/FDP_appextension.jpeg"   height="350">
+    <img align="center" src="images/FDP_appextension.png"   height="350">
 </p>
 <p align="center"> Fig. 3 - FDP as an application extension </p>
 
