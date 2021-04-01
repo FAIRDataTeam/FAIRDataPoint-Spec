@@ -119,7 +119,7 @@ See [spec.md](spec.md) for the metadata model specification.
 
 The FDP's API follows the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) architectural style and, more specifically, the [Hypermedia as the Engine of Application State (HATEOAS)](https://en.wikipedia.org/wiki/HATEOAS) pattern. In summary, a HATEOAS API provides information on how to navigate through the API even if the client does not have previous knowledge of the interface.
 
-Figure below depicts the HATEOAS RESTful API of FDP. In the figure, the upper-left box represents the FDP service and responds to requests to the root URL, hereby represented as "/". 
+Figure below depicts the HATEOAS RESTful API of FDP. In the figure, the upper-left box represents the FDP service and responds to requests to the root URL, hereby represented as "/".
 
 When the FAIR Data Point Service root URL receives an HTTP GET request (e.g., http://mydomain.com/fdp/), the Metadata Service returns the FDPMetadata resource. This resource contains information about the FDP itself such as the owner (organisation or individual), FDP version, API version, etc. The content of the FDPMetadata resource is based on the Repository concept defined in the Open Initiative Archive Protocol for Metadata Harvesting (OAI-PMH). Following the HATEOAS guidelines, the FDPMetadata resource also provides a link to the CatalogMetadata resource.
 
@@ -135,7 +135,7 @@ The main aim of this specification is to guide developers in implementing their 
 
 In order to classify an application as a FAIR Data Point, it has to present the the following characteristics:
 
-- Its root API URL must provide the Repository metadata (see [spec.md](Metadata specification) );
+- Its root API URL must provide the Repository metadata (see [Metadata specification](spec.md));
 - The metadata content must be present in, at least, RDF Turtle and JSON-LD. Other formats such as XML and JSON are allowed through content negotiation but the default media type must be RDF Turtle;
-- Each metadata record should have a reference to its own schema expressed in [https://www.w3.org/TR/shacl/](SHACL);
-- The information about how to navigate the metadata content structure must be provided in each metadata record using the [https://www.w3.org/TR/ldp/](Linked Data Platform (LDP)) containment structure (ldp:hasMemberRelation);
+- Each metadata record should have a reference to its own schema expressed in [SHACL](https://www.w3.org/TR/shacl/);
+- The information about how to navigate the metadata content structure must be provided in each metadata record using the [Linked Data Platform (LDP)](https://www.w3.org/TR/ldp/) containment structure (ldp:hasMemberRelation);
