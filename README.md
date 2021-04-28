@@ -138,4 +138,5 @@ In order to classify an application as a FAIR Data Point, it has to present the 
 - Its root API URL must provide the Repository metadata (see [Metadata specification](spec.md));
 - The metadata content must be present in, at least, RDF Turtle and JSON-LD. Other formats such as XML and JSON are allowed through content negotiation but the default media type must be RDF Turtle;
 - Each metadata record should have a reference to its own schema expressed in [SHACL](https://www.w3.org/TR/shacl/);
+- The metadata schema expressed in SHACL must have as its target class, a subclass of dcat:Resource;
 - The information about how to navigate the metadata content structure must be provided in each metadata record using the [Linked Data Platform (LDP)](https://www.w3.org/TR/ldp/) containment structure (ldp:hasMemberRelation);
