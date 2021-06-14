@@ -22,6 +22,7 @@ Table of contents
   - [Application Programming Interface (API)](#application-programming-interface-api)
     - [Metadata Provider API](#metadata-provider-api)
     - [Current implementation](#current-implementation)
+- [Characterisation](#characterisation)
 
 ## Introduction
 
