@@ -137,6 +137,10 @@ In order to classify an application as a FAIR Data Point, it has to present the 
 
 - Its root API URL must provide the Repository metadata (see [Metadata specification](spec.md));
 - The metadata content must be present in, at least, RDF Turtle and JSON-LD. Other formats such as XML and JSON are allowed through content negotiation but the default media type must be RDF Turtle;
-- Each metadata record should have a reference to its own schema expressed in [SHACL](https://www.w3.org/TR/shacl/);
+- Each metadata record should have a reference to its own profile which, on its turn, points to the metadata schema expressed in [SHACL](https://www.w3.org/TR/shacl/);
 - The metadata schema expressed in SHACL must have as its target class, a subclass of dcat:Resource;
 - The information about how to navigate the metadata content structure must be provided in each metadata record using the [Linked Data Platform (LDP)](https://www.w3.org/TR/ldp/) containment structure (ldp:hasMemberRelation);
+
+## Validation
+
+The goal of defining FDP specifications such that developers could implement these instructions in their applications is to guarantee a minimal level of predictability and interoperability in this growing ecosystem. But for this goal to be achieved, we have to guarantee that applications that claim to implement the FDP behaviours really follow the specifications. Therefore, it is necessary to have a way of verifying the compliance of a given implementation with the specs. Since the FDP specifications focus on its external behaviours and not on internal implementation, it is possible to automate the verification of whether an application in fact exposes the claimed FDP behaviours. This compliance validation is done based on the characterisation items mentioned in the section above.
