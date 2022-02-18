@@ -1,4 +1,6 @@
 # FAIR Data Point design specification
+
+<h2>⚠️ This document is deprecated and has been replaced by https://specs.fairdatapoint.org. ⚠️</h2>
 Specification for the FAIR Data Point. The master branch will contain the latest stable release of the specification, while the [development branch](/../../tree/development) contains the latest working draft.
 
 For a complete specification of the FDP metadata items, see [spec.md](spec.md).
